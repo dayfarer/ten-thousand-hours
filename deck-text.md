@@ -233,22 +233,23 @@ Change the text after each colon, then send the whole thing back to me.
 - Label above headline: Outliers — the part nobody quotes
 - Headline: Every question has an answer. The answers cost money.
 - Cost 1 question: A better monitor?
-- Cost 1 price: [FILL IN: cost]
+- Cost 1 price: $250–400
 - Cost 2 question: A coach who reviews VOD?
-- Cost 2 price: [FILL IN: cost]
+- Cost 2 price: $40 / hour
 - Cost 3 question: Move closer to a server?
-- Cost 3 price: [FILL IN: cost]
+- Cost 3 price: $5,000+
 - Cost 4 question: A flute that stays in tune?
-- Cost 4 price: [FILL IN: cost]
+- Cost 4 price: $900
 - Cost 5 question: A teacher, once a week, for eleven years?
-- Cost 5 price: [FILL IN: cost]
+- Cost 5 price: $26,400
 - Cost 6 question: Someone free to drive you there?
 - Cost 6 price: Priceless / unbuyable
 - Paragraph beside the costs: Gladwell’s real argument was never about effort. It was about access — being born at the right time, near the right people, with the right door unlocked.
 - Example 1 who: Bill Gates
-- Example 1 what: a school with a computer terminal in 1968 — almost nobody had one
+- Example 1 what: Lakeside, 1968: a teletype wired to a mainframe when almost no university had one — then seven straight years of programming
 - Example 2 who: The Beatles
-- Example 2 what: Hamburg: eight hours a night, seven nights a week, for two years
+- Example 2 what: Hamburg, 1960–62: 270 nights, five or more hours a night — about 1,200 live shows before their first hit
+  _(both figures are the ones Outliers ch. 2 actually prints — leave them unless you are checking them against the book yourself)_
 - Closing line: Obsession is the separator. *Resources are the ceiling.*
 
 ---

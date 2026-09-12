@@ -215,17 +215,27 @@ export const deck = [
     title: 'Every question has an answer. The answers cost money.',
     body: 'Gladwell’s real argument was never about effort. It was about access — ' +
           'being born at the right time, near the right people, with the right door unlocked.',
+    /* Street prices, checked against what these things actually sell for.
+       Swap any of them if your own quotes differ — keep them short, they
+       set in small caps beside the question. Basis for each:
+         monitor   240 Hz 1080p/1440p gaming panel
+         coach     per-session VOD review on the usual coaching marketplaces
+         move      average interstate move, 2–3 bedrooms, movers included
+         flute     Yamaha YFL-222 student flute, the cheapest one that holds pitch
+         teacher   $60/lesson x 40 lessons a year x 11 years */
     gates: [
-      { q: 'A better monitor?',        cost: TODO('cost') },
-      { q: 'A coach who reviews VOD?', cost: TODO('cost') },
-      { q: 'Move closer to a server?', cost: TODO('cost') },
-      { q: 'A flute that stays in tune?', cost: TODO('cost') },
-      { q: 'A teacher, once a week, for eleven years?', cost: TODO('cost') },
+      { q: 'A better monitor?',        cost: '$250–400' },
+      { q: 'A coach who reviews VOD?', cost: '$40 / hour' },
+      { q: 'Move closer to a server?', cost: '$5,000+' },
+      { q: 'A flute that stays in tune?', cost: '$900' },
+      { q: 'A teacher, once a week, for eleven years?', cost: '$26,400' },
       { q: 'Someone free to drive you there?', cost: 'Priceless / unbuyable' },
     ],
+    /* Figures are the ones Gladwell actually prints in Outliers, ch. 2 —
+       not the inflated versions that get repeated second-hand. */
     examples: [
-      { who: 'Bill Gates', what: 'a school with a computer terminal in 1968 — almost nobody had one' },
-      { who: 'The Beatles', what: 'Hamburg: eight hours a night, seven nights a week, for two years' },
+      { who: 'Bill Gates', what: 'Lakeside, 1968: a teletype wired to a mainframe when almost no university had one — then seven straight years of programming' },
+      { who: 'The Beatles', what: 'Hamburg, 1960–62: 270 nights, five or more hours a night — about 1,200 live shows before their first hit' },
     ],
     punch: 'Obsession is the separator. *Resources are the ceiling.*',
   },
