@@ -1,7 +1,7 @@
 # Ten Thousand Hours
 
 Scroll presentation on mastery and the 10,000-hour rule (*Outliers*, ch. 1–3).
-Live: https://ten-thousand-hours.netlify.app
+Live: https://ten-thousand-hours.bongakiddo.workers.dev
 
 ## Run it
 
@@ -11,6 +11,16 @@ npm run dev
 ```
 
 Opens at http://localhost:5173. Arrow keys / space step through slides.
+
+## Deploy
+
+Hosted on Cloudflare Workers (static assets, config in `wrangler.toml`).
+
+```bash
+npm run deploy
+```
+
+Builds `dist/` and uploads it. Needs `npx wrangler login` on the Cloudflare account once.
 
 ## Where things live
 

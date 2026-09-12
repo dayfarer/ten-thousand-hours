@@ -1,0 +1,6 @@
+# Static site on Cloudflare Workers — `npm run build` produces dist/, wrangler serves it.
+name = "ten-thousand-hours"
+compatibility_date = "2026-09-12"
+
+[assets]
+directory = "./dist"
