@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.netlify/
+.claude/
+.DS_Store
+# Word lock files while a doc is open
+~$*
+# generated design-canvas bundle (rebuilt from design/*.dc.html)
+design/ten-thousand-hours.html
+# photos of the assignment / personal images
+*.HEIC

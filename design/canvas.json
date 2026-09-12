@@ -1,0 +1,48 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "01 \u00b7 Hero",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Cole.dc.html",
+      "title": "03 \u00b7 Cole",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Graph.dc.html",
+      "title": "08 \u00b7 The graph",
+      "x": 0,
+      "y": 1100,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Close.dc.html",
+      "title": "12 \u00b7 Close",
+      "x": 1560,
+      "y": 1100,
+      "w": 1440,
+      "h": 900
+    }
+  ],
+  "annotations": [
+    {
+      "id": "note-redirection",
+      "x": 0,
+      "y": -230,
+      "w": 700,
+      "text": "OLD MONEY \u2014 EB Garamond.\n\nIvory ground, EB Garamond for all display (same face web4.ai uses), Jost letterspaced small caps for labels. Display sizes bumped ~9% since Garamond runs smaller and lighter than the Bodoni it replaced.\n\nGrain lifted from record2: 180px feTurbulence tile, soft-light blend, plus a warm vignette. On ivory it reads like paper stock rather than screen noise.\n\nDeep forest = obsession/Cole. Oxblood = casual/Tyler. Brass for hairlines only.\n\nFour boards \u2014 say the word and the other eight follow."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

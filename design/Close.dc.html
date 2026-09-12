@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+  <style>
+    body { margin: 0; font-family: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+           -webkit-font-smoothing: antialiased; }
+    a { color: #1f3d2b; } a:hover { color: #7a3b2e; }
+  </style>
+</helmet>
+<div style="width: 1440px; height: 900px; background: #f6f2e9; color: #1b1815; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 64px 96px 68px;">
+
+    <div style="display: flex; flex-direction: column; gap: 3px;">
+      <span style="display: block; height: 1px; background: #1b1815;"></span>
+      <span style="display: block; height: 1px; background: #cfc6b4;"></span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+      <span style="font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 99px; line-height: 1.1; font-weight: 400; letter-spacing: -0.004em;">Hours are the container.</span>
+      <span style="font-family: 'EB Garamond', Garamond, Georgia, serif; font-style: italic; font-size: 99px; line-height: 1.1; letter-spacing: -0.004em; color: #1f3d2b;">You choose the content.</span>
+      <span style="display: block; width: 90px; height: 1px; background: #a98a4b; margin-top: 34px;"></span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #6e675c;">
+      <span>[Presenter] &#183; [Class]</span>
+      <span>Ten Thousand Hours</span>
+      <span>MMXXVI</span>
+    </div>
+
+  </div>
+
+  <div style="position: absolute; inset: 0; pointer-events: none; z-index: 40; background: radial-gradient(115% 88% at 50% 38%, rgba(246,242,233,0) 44%, rgba(122,105,78,0.14) 100%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; z-index: 41; background-image: url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27180%27%20height=%27180%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.8%27%20numOctaves=%274%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url%28%23n%29%27/%3E%3C/svg%3E); mix-blend-mode: soft-light; opacity: 0.68;"></div>
+</div>
+</x-dc>
+</body>
+</html>

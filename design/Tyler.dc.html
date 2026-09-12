@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap">
+  <style>
+    body { margin: 0; font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+           -webkit-font-smoothing: antialiased; }
+    a { color: #cdf24d; } a:hover { color: #e2ff8a; }
+  </style>
+</helmet>
+<div style="width: 1440px; height: 900px; background: #0a0a0c; color: #f4f1ea; position: relative; overflow: hidden;">
+  <div style="position: absolute; width: 760px; height: 760px; left: -180px; top: 200px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,138,92,0.16), rgba(255,138,92,0) 70%); filter: blur(40px);"></div>
+
+  <div style="position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 80px; align-items: center; padding: 0 90px;">
+
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <span style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #ff8a5c;">Exhibit B</span>
+
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h1 style="margin: 0; font-size: 104px; line-height: 0.9; letter-spacing: -0.045em; font-weight: 500;">Tyler</h1>
+        <span style="font-family: 'DM Mono', monospace; font-size: 17px; color: #8a877f;">Rainbow Six Siege</span>
+      </div>
+
+      <div style="display: flex; align-items: baseline; gap: 18px;">
+        <span style="font-family: 'DM Mono', monospace; font-size: 132px; line-height: 0.86; color: #ff8a5c; letter-spacing: -0.04em;">2,500</span>
+        <span style="font-size: 26px; color: #8a877f;">hours</span>
+      </div>
+
+      <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #8a877f; max-width: 40ch;">
+        Twenty&#8209;five percent of the way to mastery.<br>Zero percent of the way to good.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+
+      <div style="border: 1px solid #26252b; background: #131316; padding: 30px 28px; display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a877f;">Current rank</span>
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#ff8a5c" stroke-width="1.4" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
+          <span style="font-size: 36px; letter-spacing: -0.03em;">[rank]</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 12px; color: #8a877f;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #ff8a5c; display: block;"></span>
+          <span>Unchanged for [n] seasons</span>
+        </div>
+      </div>
+
+      <div style="border-left: 3px solid #ff8a5c; padding: 6px 0 6px 26px; display: flex; flex-direction: column; gap: 14px;">
+        <p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 34px; line-height: 1.28; color: #f4f1ea;">
+          &#8220;[Tyler&#8217;s exact quote &#8212; the &#8216;still trash&#8217; line, verbatim]&#8221;
+        </p>
+        <span style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a877f;">&#8212; Tyler</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

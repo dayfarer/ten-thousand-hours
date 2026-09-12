@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap">
+  <style>
+    body { margin: 0; font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+           -webkit-font-smoothing: antialiased; }
+    a { color: #cdf24d; } a:hover { color: #e2ff8a; }
+  </style>
+</helmet>
+<div style="width: 1440px; height: 900px; background: #07080a; color: #d8f5e3; position: relative; overflow: hidden; font-family: 'DM Mono', monospace;">
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(#0e1114 1px, transparent 1px), linear-gradient(90deg, #0e1114 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 52px 80px;">
+
+    <div style="display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #4b6b58;">
+      <span>Direction C</span><span>Terminal / scoreboard</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <div style="display: flex; align-items: baseline; gap: 20px;">
+        <span style="font-size: 200px; line-height: 0.8; letter-spacing: -0.04em; color: #4ade80;">10000</span>
+        <span style="font-size: 30px; color: #4b6b58;">HRS</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: #17201b; border: 1px solid #17201b; max-width: 900px;">
+        <div style="background: #07080a; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 11px; letter-spacing: 0.16em; color: #4b6b58;">SUBJECT_A</span><span style="font-size: 22px;">COLE</span>
+        </div>
+        <div style="background: #07080a; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 11px; letter-spacing: 0.16em; color: #4b6b58;">SUBJECT_B</span><span style="font-size: 22px;">TYLER</span>
+        </div>
+        <div style="background: #07080a; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 11px; letter-spacing: 0.16em; color: #4b6b58;">DELTA</span><span style="font-size: 22px; color: #4ade80;">UNRESOLVED</span>
+        </div>
+      </div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6f8f7c; max-width: 62ch;">
+        Everything is a readout. Mono throughout, grid lines exposed, data-first.
+        Tradeoff: perfect for Tyler and the graph, but it flattens Cole &#8212; the human,
+        musical half loses all its warmth.
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+      <span style="width: 90px; height: 34px; background: #07080a; border: 1px solid #17201b; display: block;"></span>
+      <span style="width: 90px; height: 34px; background: #4ade80; display: block;"></span>
+      <span style="width: 90px; height: 34px; background: #4b6b58; display: block;"></span>
+      <span style="width: 90px; height: 34px; background: #d8f5e3; display: block;"></span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
