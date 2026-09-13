@@ -9,3 +9,4 @@ dist/
 design/ten-thousand-hours.html
 # photos of the assignment / personal images
 *.HEIC
+dist-rel/

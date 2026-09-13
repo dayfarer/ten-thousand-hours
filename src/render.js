@@ -3,6 +3,11 @@ import { deck, chapters, meta } from './content.js'
 
 const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
 
+/* Photo paths are written as '/cole.jpg' in content.js. Resolve them against
+   the build's base so the deck also works when it is served from a
+   subdirectory rather than a domain root. */
+const asset = p => p ? import.meta.env.BASE_URL.replace(/\/$/, '/') + String(p).replace(/^\//, '') : p
+
 /* TODO() values render with a visible marker so gaps can't ship unnoticed */
 const t = v => {
   if (v && typeof v === 'object' && v.__todo) return `<i class="todo">${esc(v.text)}</i>`
@@ -81,7 +86,7 @@ const views = {
     <div class="portrait">
       <figure class="plate" data-rise>
         <div class="plate__inner">
-          ${s.photo ? `<img src="${esc(s.photo)}" alt="${esc(s.name)}" loading="lazy">` : `
+          ${s.photo ? `<img src="${esc(asset(s.photo))}" alt="${esc(s.name)}" loading="lazy">` : `
           <svg viewBox="0 0 24 24" width="86" fill="none" stroke="currentColor" stroke-width=".9">
             <rect x="3" y="5" width="18" height="14"></rect><circle cx="8.5" cy="10.5" r="1.6"></circle>
             <path d="M21 15l-5.5-5.5L5 19"></path>
@@ -110,7 +115,7 @@ const views = {
         <figure class="print${f.verified ? ' print--verified' : ''}" data-print>
           <div class="print__frame">
             <div class="print__img" data-develop>${f.src
-              ? `<img src="${esc(f.src)}" alt="${esc(f.title)}" loading="lazy">`
+              ? `<img src="${esc(asset(f.src))}" alt="${esc(f.title)}" loading="lazy">`
               : placeholder(f, i)}</div>
           </div>
           <figcaption class="placard">
