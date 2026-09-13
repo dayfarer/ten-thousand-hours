@@ -33,6 +33,13 @@ Builds `dist/` and uploads it. Needs `npx wrangler login` on the Cloudflare acco
 | One-page-per-scroll behaviour | `src/gate.js` |
 
 `deck-text.docx` is a fill-in copy of every line of text, for writing copy outside the code.
+It is generated from `src/content.js`, so regenerate it rather than editing it in place:
+
+```bash
+npm run deck-doc
+```
+
+Fill in the highlighted cells, send the file back, and the answers get applied to `src/content.js`.
 
 ## Assignment checklist
 
