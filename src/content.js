@@ -11,8 +11,8 @@
 export const TODO = t => ({ __todo: true, text: t })
 
 export const meta = {
-  masthead: 'Nine Thousand Hours',     // top of the opening and closing slides
-  presenters: 'Jordan Alvarez',
+  masthead: 'Ten Thousand Hours',     // top of the opening and closing slides
+  presenters: TODO('Presenter name(s)'),
   course: TODO('Class / course'),
   year: 'MMXXVI',
   scrollCue: 'Scroll',
@@ -35,7 +35,7 @@ export const deck = [
     id: 'hero',
     nav: 'Open',
     eyebrow: 'A presentation on mastery',
-    countTo: 9000,
+    countTo: 10000,
     unitLine: 'hours to master',
     sub: 'It is the most quoted number in self-improvement. It is also not what the research said.',
   },
