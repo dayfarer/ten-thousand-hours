@@ -93,12 +93,14 @@ export const deck = [
     totalLabel: 'Hours accumulated',
     /* `hours` accumulates on screen as you scroll through the track */
     stops: [
-      { year: TODO('year'), hours: 120,  title: TODO('First lesson'),      body: TODO('One line about it.') },
+      { year: '2019', hours: 120,  title: 'First lesson', body: 'Sixth grade. She was eleven.' },
       { year: TODO('year'), hours: 400,  title: TODO('Joined band'),       body: TODO('One line about it.') },
-      { year: TODO('year'), hours: 900,  title: TODO('First solo'),        body: TODO('One line about it.') },
-      { year: TODO('year'), hours: 1800, title: TODO('First audition'),    body: TODO('One line about it.') },
+      { year: '2023', hours: 900,  title: 'First solo',
+        body: 'Sophomore year, and only because it was required. She was too shy to want it, ' +
+              'and never had to audition for anything, not even this.' },
+      { year: TODO('year'), hours: 1800, title: TODO('Next milestone'),    body: TODO('One line about it.') },
       { year: TODO('year'), hours: 3000, title: TODO('Milestone'),         body: TODO('One line about it.') },
-      { year: TODO('year'), hours: 4200, title: TODO('Where she is now'),  body: TODO('One line about it.') },
+      { year: '2026', hours: 4200, title: TODO('Where she is now'),  body: TODO('One line about it.') },
     ],
   },
 
