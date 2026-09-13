@@ -183,8 +183,18 @@ async function save (path, value) {
   const g = groupOf(path); if (!g) return
   const same = value === (defaults[path] ?? '')
   saving++; $('#m-state').textContent = 'yes'
+  const ref = db.doc('copy/' + g.id)
+  const patch = { [keyOf(path)]: same ? '' : value }
   try {
-    await db.doc('copy/' + g.id).update({ [keyOf(path)]: same ? '' : value })
+    try {
+      await ref.update(patch)
+    } catch (e) {
+      // update() cannot create a document, so the first write to a slide
+      // that has no document yet fails. set() creates it, and every later
+      // write merges as normal.
+      if (e.code !== 'invalid_argument') throw e
+      await ref.set(patch)
+    }
     if (same) { delete edits[path]; paint(path, false) } else { edits[path] = value; paint(path, true) }
     countEdited(); flash('Saved')
   } catch (e) {
