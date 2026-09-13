@@ -25,6 +25,7 @@ export const chapters = [
   { id: 'ch-2', numeral: 'II',  title: 'The Number',    sub: 'Where 10,000 came from' },
   { id: 'ch-3', numeral: 'III', title: 'The Separator', sub: 'Why the same hours diverge' },
   { id: 'ch-4', numeral: 'IV',  title: 'The Content',   sub: 'What actually filled them' },
+  { id: 'ch-5', numeral: 'V',   title: 'The Application', sub: 'Where the argument has to go next' },
 ]
 
 export const deck = [
@@ -251,6 +252,34 @@ export const deck = [
     lead: 'So we asked her what all that time actually taught her.',
     quote: TODO("Cole's takeaway — what she learned about learning. This is the line the whole deck lands on."),
     attribution: TODO('Cole — full name'),
+  },
+
+  /* ─── V — THE APPLICATION ────────────────────────────────────── */
+  { type: 'chapter', id: 'ch-5', nav: 'V · The Application' },
+
+  {
+    type: 'gated',
+    id: 'food-gates',
+    nav: 'Food security',
+    kicker: 'Power of Food, applying the same argument',
+    title: 'Every gate has a name. None of them are willpower.',
+    body: 'Nobody eats badly because they lack willpower any more than Tyler lacked hours. ' +
+          'The same gates that decided who got to be great decide who gets to eat well: ' +
+          'proximity, time, money, and someone who already knows how. ' +
+          'Leadership here does not mean telling people to try harder. It means opening a gate.',
+    gates: [
+      { q: 'A grocery store nearby?',                cost: 'Miles, not minutes' },
+      { q: 'Time to cook after two jobs?',            cost: 'Rarely any' },
+      { q: 'Money for the version that is not packaged?', cost: 'Priced like a luxury' },
+      { q: 'A kitchen that actually works?',          cost: 'Not guaranteed' },
+      { q: 'Someone who already knows how to cook it?', cost: 'Depends who raised you' },
+      { q: 'A ride to get there at all?',             cost: 'Not everyone has one' },
+    ],
+    examples: [
+      { who: 'A ride',   what: 'A community shuttle to the grocery store on pantry days' },
+      { who: 'A recipe', what: 'A thirty minute recipe card that assumes two jobs and one pan' },
+    ],
+    punch: 'Obsession made Cole a musician. Access decides who gets to eat.',
   },
 
   {
