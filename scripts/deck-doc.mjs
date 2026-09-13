@@ -80,7 +80,9 @@ function rowsFor (s) {
     }
     case 'portrait':
       push('Label above name', s.kicker); push('Name', s.name)
-      push('Instrument (italic, after the name)', s.role); push('Photo caption', s.photoCaption)
+      push('Line under the name', s.role)
+      if ('photo' in s) push('Photo file (in public/)', s.photo)
+      push('Photo caption', s.photoCaption)
       s.facts.forEach((f, i) => { push(`Fact ${i + 1} label`, f.k); push(`Fact ${i + 1} value`, f.v) })
       push('Quote under the facts', s.note)
       break
@@ -148,15 +150,34 @@ function rowsFor (s) {
   return r
 }
 
-const TITLES = {
-  hero: 'Opening', portrait: 'Meet Cole', dramatization: 'The origin story (photo wall)',
-  timeline: 'Cole’s timeline', statement: 'Big statement', claim: 'The 10,000-hour claim',
-  correction: 'The correction', exhibit: 'Meet Tyler', graph: 'The graph',
-  spiral: 'The question spiral', gated: 'The catch', takeaway: 'Cole’s takeaway', close: 'Closing',
-}
+/* Slide types are reused (two `gated`, two `takeaway`, two `portrait`), so the
+   heading comes from each slide's own nav label rather than its type. */
 const titleFor = (s, i) => s.type === 'chapter'
   ? `Slide ${ord(i + 1)} — Chapter ${chapters.find(c => c.id === s.id).numeral}`
-  : `Slide ${ord(i + 1)} — ${TITLES[s.type] ?? s.type}`
+  : `Slide ${ord(i + 1)} — ${s.nav}`
+
+/* Every content-bearing key each slide type puts in the document. Anything a
+   slide carries that is not listed here is copy that would silently never
+   reach the page, so it is reported and appended rather than dropped. */
+const STRUCTURAL = ['type', 'id', 'nav']
+const HANDLED = {
+  hero: ['eyebrow', 'countTo', 'unitLine', 'sub'],
+  chapter: [],
+  portrait: ['kicker', 'name', 'role', 'photo', 'photoCaption', 'facts', 'note'],
+  dramatization: ['kicker', 'title', 'sub', 'frames', 'disclaimer'],
+  timeline: ['kicker', 'title', 'totalLabel', 'stops'],
+  statement: ['lines', 'accentLines', 'small'],
+  claim: ['kicker', 'big', 'title', 'body', 'footnote'],
+  correction: ['kicker', 'strike', 'replace', 'body', 'kicker2'],
+  exhibit: ['kicker', 'name', 'role', 'countTo', 'unit', 'punch', 'rankLabel', 'rank', 'quote'],
+  graph: ['kicker', 'title', 'curves', 'markers', 'gapLabel', 'axisX', 'axisY', 'foot'],
+  spiral: ['kicker', 'title', 'sub', 'questions', 'finalIndex', 'beat'],
+  gated: ['kicker', 'title', 'gates', 'body', 'examples', 'punch'],
+  takeaway: ['kicker', 'lead', 'quote', 'attribution'],
+  close: ['lines', 'accent'],
+}
+const unhandledKeys = s => Object.keys(s)
+  .filter(k => !STRUCTURAL.includes(k) && !(HANDLED[s.type] ?? []).includes(k))
 
 /* ── count what is still unfilled, so the top of the doc says so ── */
 let blanks = 0
@@ -192,30 +213,35 @@ const children = [
   ]),
 ]
 
+const missed = []
 deck.forEach((s, i) => {
   children.push(h(titleFor(s, i), HeadingLevel.HEADING_1))
-  children.push(table(rowsFor(s)))
-  if (s.type === 'chapter') children.push(note('The list beside it shows all four chapter titles automatically.'))
+  const rows = rowsFor(s)
+  for (const k of unhandledKeys(s)) {
+    missed.push(`${s.id}.${k}`)
+    if (typeof s[k] !== 'object') rows.push(row(k, s[k]))
+  }
+  children.push(table(rows))
+  if (s.type === 'chapter') children.push(note(`The list beside it shows all ${chapters.length} chapter titles automatically.`))
   if (s.type === 'timeline') children.push(note('The counter climbs as you scroll and ends on the last stop’s hours — that should be Cole’s total.'))
   if (s.type === 'dramatization') children.push(note('“Plate I, II…” numbers are added automatically; the last photo is the flute punchline.'))
   if (s.type === 'spiral') children.push(note('The last question is the punchline — it ends up alone on screen.'))
   if (s.type === 'exhibit') children.push(note('The quote is signed with his name automatically.'))
 })
 
-/* The assignment asks for four sections; the deck currently only builds the
-   first. Space for the other three, so they can be drafted in the same pass. */
+/* Sections 1 and 3-5 have slides. Section 2 has none, so it gets drafting
+   space here; these rows are notes, not a slide, until they come back filled. */
 children.push(new Paragraph({ children: [new PageBreak()] }))
-children.push(h('Slides that do not exist yet', HeadingLevel.HEADING_1))
-p('')
-children.push(p('The README checklist lists four sections. The deck covers Section 1. If the rubric wants the other three, sketch them here — rough notes are enough, they can be turned into real slides.', { size: 21 }))
+children.push(h('Section 2 — the slide that does not exist yet', HeadingLevel.HEADING_1))
+children.push(p('The assignment asks you to connect the Outliers lesson to the LinkedIn Learning module “Developing Leadership Mindsets”. Nothing in the deck does that yet — it is the only section without slides.', { size: 21 }))
+children.push(p('Rough notes are enough. Send them back and they get built into a chapter that sits between the argument and the food-security section.', { size: 21, after: 200 }))
 children.push(table([
-  row('Section 2 — “Developing Leadership Mindsets”: the connection', '[FILL IN]'),
-  row('Section 2 — anything specific from the module to quote', '[FILL IN]'),
-  row('Section 3 — how this applies to food insecurity / community service', '[FILL IN]'),
-  row('Section 3 — a concrete example or number worth putting on screen', '[FILL IN]'),
-  row('Section 4 — professional brand statement for the group', '[FILL IN]'),
+  row('Which mindset from the module you are using', '[FILL IN]'),
+  row('How it connects to hours vs. deliberate practice', '[FILL IN]'),
+  row('A line from the module worth putting on screen', '[FILL IN]'),
+  row('Where it shows up in your own group', '[FILL IN]'),
 ]))
-children.push(note('These rows are plain text, not slides yet — send back whatever you have and the slides get built around it.'))
+children.push(note('Delete any row you do not want and the slide gets built around what is left.'))
 
 const doc = new Document({
   styles: {
@@ -238,4 +264,8 @@ const out = new URL('../deck-text.docx', import.meta.url).pathname
 Packer.toBuffer(doc).then(buf => {
   writeFileSync(out, buf)
   console.log(`wrote ${out} — ${deck.length} slides, ${blanks} blanks`)
+  if (missed.length) {
+    console.warn(`\n${missed.length} field(s) not in the label map — add them to HANDLED and rowsFor():`)
+    missed.forEach(m => console.warn('  ' + m))
+  }
 })
