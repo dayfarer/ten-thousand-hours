@@ -310,6 +310,9 @@ canvas{display:block}
   font-size:clamp(1.5rem,3.6vw,3rem);color:var(--forest);line-height:1.16;
 }
 
+/* covered sheets are not painted — see the stow pass in main.js */
+.sheet.is-stowed{visibility:hidden}
+
 /* ═══ gated ════════════════════════════════════════════════ */
 .gated{display:flex;flex-direction:column;gap:clamp(1.6rem,4vh,2.6rem)}
 .gated__head h2{font-size:clamp(1.8rem,4vw,3.2rem);max-width:24ch}
@@ -330,6 +333,10 @@ canvas{display:block}
 /* ═══ takeaway ═════════════════════════════════════════════ */
 .takeaway{display:flex;flex-direction:column;align-items:center;gap:1.8rem;text-align:center}
 .takeaway__q{margin:0;max-width:30ch}
+/* a brand statement is a paragraph, not a one-line pull quote: at 30ch it
+   set as a narrow column taller than the screen and pushed the kicker off */
+.takeaway--long .takeaway__q{max-width:44ch}
+.takeaway--long .takeaway__q p{font-size:clamp(1.05rem,1.9vw,1.6rem);line-height:1.45}
 .takeaway__q p{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,3.2rem);line-height:1.26;text-wrap:pretty}
 .attrib{display:flex;align-items:center;gap:.9rem;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
 .attrib i{display:block;width:2.4rem;height:1px;background:var(--hair)}

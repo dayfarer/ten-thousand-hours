@@ -261,7 +261,7 @@ const views = {
     </div>`,
 
   takeaway: s => `
-    <div class="takeaway">
+    <div class="takeaway${s.long ? ' takeaway--long' : ''}">
       ${kicker(s.kicker)}
       <p class="lede" data-rise>${t(s.lead)}</p>
       <blockquote class="takeaway__q" data-rise><p>&ldquo;${t(s.quote)}&rdquo;</p></blockquote>

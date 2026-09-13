@@ -263,6 +263,7 @@ export const deck = [
     nav: 'Our brand',
     kicker: 'Section 4 — professional brand statement',
     lead: 'So here is the statement we are staking our name to.',
+    long: true,          // a paragraph, not a one-line pull quote
     quote: 'We do not count hours. We build the loops that make hours count — asking to be corrected ' +
            'before it is comfortable, and being that correction for the people around us. ' +
            'Nobody gets good alone, and we would rather fewer people had to try.',

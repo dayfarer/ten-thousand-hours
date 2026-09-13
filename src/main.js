@@ -54,6 +54,9 @@ addEventListener('load', gate.measure)
    gsap.from() leaves them stuck at opacity 0 forever. IO reports real
    visibility and is indifferent to sticky. */
 let playClose = () => {}
+/* assigned with the reveals below; a pinned sheet shows all of its content,
+   so whatever the observer missed is played when the sheet becomes active */
+let revealSheet = () => {}
 
 const inView = (el, fn, margin = '0px 0px -10% 0px') => {
   const io = new IntersectionObserver(entries => {
@@ -128,6 +131,13 @@ if (!reduced) {
     if (i === active) return
     active = i
     folio.textContent = `${pad(i + 1)} / ${pad(tops.length)}`
+    /* Sheets are sticky, so a covered one never stops compositing its own
+       scale/brightness: with all of them live the frame budget went from
+       83ms at the top of the deck to 333ms at the end, wheel events queued
+       behind it, and a single flick turned several pages. Only the sheet on
+       screen and the two it hands off to need painting. */
+    sheets.forEach((sh, k) => sh.classList.toggle('is-stowed', Math.abs(k - i) > 1))
+    revealSheet(sheets[i])
     // hero and close print their own presenter/year lines
     document.body.classList.toggle('chrome-off', i === 0 || i === tops.length - 1)
     if (i === tops.length - 1 && !closed) { closed = true; playClose() }
@@ -139,10 +149,23 @@ if (!reduced) {
 }
 
 /* ── generic reveals ─────────────────────────────────────── */
-$$('[data-rise]').forEach(el => {
-  gsap.set(el, { y: 26, opacity: 0 })
-  inView(el, () => gsap.to(el, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out' }))
-})
+{
+  /* The observer ignores the bottom 10% of the screen so nothing pops in
+     while barely peeking. On a full-screen pinned sheet that tenth is real
+     content — the closing line of the gated slides sat at 848px of 900 and
+     never qualified — so a sheet becoming active also plays its own. */
+  const play = el => {
+    if (el.__risen) return
+    el.__risen = true
+    gsap.to(el, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out' })
+  }
+  $$('[data-rise]').forEach(el => {
+    gsap.set(el, { y: 26, opacity: 0 })
+    inView(el, () => play(el))
+  })
+  revealSheet = sheet => sheet && $$('[data-rise]', sheet).forEach(play)
+  revealSheet(sheets[0])
+}
 
 /* ── counters ────────────────────────────────────────────── */
 $$('[data-count]').forEach(el => {

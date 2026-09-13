@@ -174,7 +174,7 @@ const HANDLED = {
   graph: ['kicker', 'title', 'curves', 'markers', 'projection', 'gapLabel', 'axisX', 'axisY', 'foot'],
   spiral: ['kicker', 'title', 'sub', 'questions', 'finalIndex', 'beat'],
   gated: ['kicker', 'title', 'gates', 'body', 'examples', 'punch'],
-  takeaway: ['kicker', 'lead', 'quote', 'attribution'],
+  takeaway: ['kicker', 'lead', 'long', 'quote', 'attribution'],
   close: ['lines', 'accent'],
 }
 const unhandledKeys = s => Object.keys(s)
