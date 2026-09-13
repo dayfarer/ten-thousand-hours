@@ -304,6 +304,7 @@ export const deck = [
     kicker: 'Section 5 — LinkedIn profile draft',
     name: 'Eduard Varga',
     role: 'Honors Finance Student, UNF',
+    photo: '/eduard.png',
     photoCaption: 'linkedin.com/in/eduardvarga',
     facts: [
       { k: 'School', v: 'UNF, Coggin Honors' },
