@@ -147,6 +147,7 @@ canvas{display:block}
   display:flex;align-items:center;justify-content:center;color:#c2b8a4;position:relative;
 }
 .plate__inner::after{content:"";position:absolute;inset:13px;border:1px solid var(--hair-2)}
+.plate__inner img{width:100%;height:100%;object-fit:cover}
 .plate figcaption{text-align:center;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#a89e8c}
 .portrait__body{display:flex;flex-direction:column;gap:clamp(1.4rem,3vh,2.4rem)}
 .portrait__name{font-size:clamp(3rem,9vw,9.5rem);line-height:.84}

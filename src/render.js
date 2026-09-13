@@ -81,10 +81,11 @@ const views = {
     <div class="portrait">
       <figure class="plate" data-rise>
         <div class="plate__inner">
+          ${s.photo ? `<img src="${esc(s.photo)}" alt="${esc(s.name)}" loading="lazy">` : `
           <svg viewBox="0 0 24 24" width="86" fill="none" stroke="currentColor" stroke-width=".9">
             <rect x="3" y="5" width="18" height="14"></rect><circle cx="8.5" cy="10.5" r="1.6"></circle>
             <path d="M21 15l-5.5-5.5L5 19"></path>
-          </svg>
+          </svg>`}
         </div>
         <figcaption>${t(s.photoCaption)}</figcaption>
       </figure>

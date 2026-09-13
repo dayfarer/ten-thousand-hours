@@ -12,8 +12,8 @@ export const TODO = t => ({ __todo: true, text: t })
 
 export const meta = {
   masthead: 'Ten Thousand Hours',     // top of the opening and closing slides
-  presenters: TODO('Presenter name(s)'),
-  course: TODO('Class / course'),
+  presenters: 'Collin, Bryan, Bonga, Eduard, and Cole',
+  course: 'Power of Food',
   year: 'MMXXVI',
   scrollCue: 'Scroll',
   chapterLabel: 'Chapter',
