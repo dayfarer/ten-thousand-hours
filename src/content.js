@@ -76,7 +76,7 @@ export const deck = [
       { title: 'Not Cole', medium: 'Stock photograph', note: 'Licensed, 2019', src: '' },
       { title: 'A different child entirely', medium: 'Stock photograph', note: 'Also licensed', src: '' },
       { title: 'Woman, thirties, portraying “mother”', medium: 'Paid actor', note: 'Day rate undisclosed', src: '' },
-      { title: 'Also not Cole', medium: 'Stock photograph', note: 'We checked', src: '' },
+      { title: 'Photo of Cole in band, pictured', medium: 'Actual photograph', note: 'The one real one', src: '/cole-band.jpg' },
       { title: 'Flute', medium: 'Object', note: 'Verified accurate', verified: true, src: '' },
     ],
     disclaimer:
