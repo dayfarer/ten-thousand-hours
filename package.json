@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "vite build && wrangler deploy"
+    "deploy": "vite build && wrangler deploy",
+    "deck-doc": "node scripts/deck-doc.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.5",
     "lenis": "^1.1.18"
   },
   "devDependencies": {
+    "docx": "^9.7.1",
     "vite": "^5.4.10",
     "wrangler": "^4.131.1"
   }
