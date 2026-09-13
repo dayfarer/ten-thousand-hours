@@ -15,6 +15,9 @@
    the point.
    ═══════════════════════════════════════════════════════════════════ */
 
+import { applyOverrides } from './copy.js'
+import overrides from './copy.data.js'
+
 export const TODO = t => ({ __todo: true, text: t })
 
 export const meta = {
@@ -379,3 +382,7 @@ export const deck = [
     accent: 'Ten thousand corrections will.',
   },
 ]
+
+/* Wording edited in the live editor arrives here. Paths not present keep
+   whatever is written above, so a partly-filled copy.json is safe. */
+applyOverrides(deck, overrides, meta, chapters)

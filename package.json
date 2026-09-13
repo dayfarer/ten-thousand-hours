@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && wrangler deploy",
-    "deck-doc": "node scripts/deck-doc.mjs"
+    "deck-doc": "node scripts/deck-doc.mjs",
+    "editor": "node scripts/build-editor.mjs",
+    "pull-copy": "node scripts/pull-copy.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.5",

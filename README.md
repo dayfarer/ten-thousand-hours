@@ -26,7 +26,7 @@ Builds `dist/` and uploads it. Needs `npx wrangler login` on the Cloudflare acco
 
 | To change | Edit |
 |---|---|
-| Any words on any slide | `src/content.js` (`*asterisks*` = italics, `TODO()` = blank to fill) |
+| Any words on any slide | The live editor (below), or `src/content.js` directly (`*asterisks*` = italics, `TODO()` = blank to fill) |
 | Slide layouts | `src/render.js` |
 | Colours, fonts, grain | `src/style.css` (`--grain` sets grain strength) |
 | Scroll, transitions, animation | `src/main.js` |
@@ -40,6 +40,27 @@ npm run deck-doc
 ```
 
 Fill in the highlighted cells, send the file back, and the answers get applied to `src/content.js`.
+
+## Editing the words without touching code
+
+Everyone on the team can edit every line of the site from one page:
+
+```bash
+npm run editor      # rebuilds editor.html from the current deck
+```
+
+Claude publishes `editor.html` as an artifact. Edits save live for the whole
+group and land in the artifact's database — nothing is written to the repo
+until someone asks Claude to **pull the copy**, which runs:
+
+```bash
+npm run pull-copy <dir>   # database export -> src/copy.data.js
+```
+
+`copy.data.js` maps field paths (`cole.name`, `gated.gates.2.q`) to
+replacements. `content.js` keeps the default wording and applies those
+overrides on top, so an empty box in the editor means "leave it as it is"
+and a stale path is ignored rather than breaking the build.
 
 ## Assignment checklist
 
