@@ -260,6 +260,22 @@ const views = {
       <p class="pull gated__punch" data-rise>${t(s.punch)}</p>
     </div>`,
 
+  plate: s => `
+    <div class="pl">
+      <figure class="pl__fig" data-rise>
+        <img src="${esc(asset(s.photo))}" alt="${esc(s.title)}" loading="lazy">
+        <figcaption>${t(s.photoCaption)}</figcaption>
+      </figure>
+      <div class="pl__body">
+        ${kicker(s.kicker)}
+        <h2 data-rise>${t(s.title)}</h2>
+        <ol class="pl__list">
+          ${s.items.map(it => `<li data-gate><em>${t(it.k)}</em><span>${t(it.v)}</span></li>`).join('')}
+        </ol>
+        <p class="pull" data-rise>${t(s.note)}</p>
+      </div>
+    </div>`,
+
   takeaway: s => `
     <div class="takeaway${s.long ? ' takeaway--long' : ''}">
       ${kicker(s.kicker)}

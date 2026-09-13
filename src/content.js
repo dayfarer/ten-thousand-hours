@@ -7,9 +7,12 @@
    renders with a dashed amber outline on screen so gaps are obvious
    while you build — they disappear once you replace the text.
 
-   ONE LESSON: hours do not teach you, feedback does — and feedback
-   is bought. Every chapter is one section of the assignment, in order,
-   so the four sections are impossible to miss.
+   ONE LESSON: hours do not teach you, feedback does — and feedback is
+   bought. Every chapter is one section of the assignment, in order.
+
+   Everything attributed to Cole is quoted from what she actually wrote
+   in the group chat. Do not smooth her wording out; the register is
+   the point.
    ═══════════════════════════════════════════════════════════════════ */
 
 export const TODO = t => ({ __todo: true, text: t })
@@ -78,7 +81,7 @@ export const deck = [
     nav: 'Duration vs slope',
     lines: ['The rule counts hours.', 'Hours are a duration.'],
     accentLines: ['Skill is a slope.'],
-    small: 'Every argument in this presentation is about the second one.',
+    small: 'Everything after this slide is about the second one.',
   },
 
   {
@@ -93,12 +96,80 @@ export const deck = [
     facts: [
       { k: 'Started', v: 'Age 11, 6th grade' },
       { k: 'Years in', v: '7' },
-      { k: 'Hours', v: '4,200' },
-      { k: 'Corrected by a teacher', v: 'Every week, 7 years' },
+      { k: 'Est. hours', v: '4,200' },
+      { k: 'Corrected by a teacher', v: 'Every week' },
     ],
-    note: 'She is not obsessed. She did the solo because it was required, and she never had to audition ' +
-          'for anything. What she had was somebody in the room telling her what was wrong — every week, ' +
-          'for seven years.',
+    note: 'She owns two flutes and has named them both — Stephanie and Serenity. One is “made from your ' +
+          'basic metals used in cheap jewelry.” The other has a sterling silver headjoint, shaped to her ' +
+          'own mouth. *Eight hundred dollars, and ten thousand.*',
+  },
+
+  /* The booklet is the single best piece of evidence in the project:
+     deliberate practice as a physical object, with the feedback loop
+     printed into the instructions. */
+  {
+    type: 'plate',
+    id: 'scales',
+    nav: 'The booklet',
+    kicker: 'Plate II — deliberate practice, as printed',
+    title: 'This is what filled the hours',
+    photo: '/scales-page.jpg',
+    photoCaption: 'Flute Scale Studies · organized by Mr. Bryan McCall II',
+    items: [
+      { k: 'Section 1', v: 'Long Tones — “hold the note until the director signals you to the next note”' },
+      { k: 'Section 2', v: 'FBA Style' },
+      { k: 'Section 3', v: 'Thirds' },
+      { k: 'Section 4', v: 'Clark Flexibilities' },
+      { k: 'Section 5', v: 'Articulation — slur two, tongue two; tongue all; slur up, tongue down' },
+      { k: 'Section 6', v: 'Tonguing — four sixteenths and a quarter' },
+      { k: 'Section 7', v: 'Remington Interval Slurs' },
+    ],
+    note: 'Seven sections, twelve scales, one skill isolated at a time. Read Section 1 again: the exercise ' +
+          'does not end when you decide it does. *It ends when someone else tells you.*',
+  },
+
+  {
+    type: 'dramatization',
+    id: 'record',
+    nav: 'The record',
+    kicker: 'The record, as kept',
+    title: 'The origin story we *do* have',
+    sub: 'Seven years of it. None of these are stock photographs.',
+    frames: [
+      { title: 'The instrument', medium: 'Photograph', note: 'Band room', src: '/flute.jpg' },
+      { title: 'A flute behind glass', medium: 'Photograph', note: 'Washington, DC', src: '/museum.jpg' },
+      { title: 'Piccolo, Friday night', medium: 'Photograph', note: 'Royal Regiment', src: '/piccolo-night.jpg' },
+      { title: 'Fourth of July parade', medium: 'Photograph', note: 'The Capitol, this year', src: '/capitol.jpg' },
+      { title: 'The stands', medium: 'Photograph', note: 'An ordinary Friday', src: '/stands.jpg' },
+      { title: 'Nobody does it alone', medium: 'Photograph', note: 'Verified accurate', verified: true, src: '/flute-circle.jpg' },
+    ],
+    disclaimer: 'Cole plays the flute and the piccolo for the South Plantation Royal Regiment. ' +
+                'Every photograph here is hers.',
+  },
+
+  /* Cole's own suggestion: "it would probably be more efficient to add
+     what skills i gained at each grade level to move onto the next one."
+     Years and milestones are hers. The hour figures are a straight
+     interpolation between her start and her own 4,200 estimate —
+     swap them if she wants to count properly. */
+  {
+    type: 'timeline',
+    id: 'timeline',
+    nav: 'Timeline',
+    kicker: 'The record, as kept',
+    title: 'Not hours stacking up. *Techniques unlocking.*',
+    totalLabel: 'Hours accumulated',
+    stops: [
+      { year: '2019', hours: 120,  title: 'Sixth grade, age eleven',
+        body: 'Long tones. Hold the note until the director signals. Her school was broke, so it was band.' },
+      { year: '2022', hours: 1400, title: 'Age thirteen, a grade 7',
+        body: '“which only SOME high school seniors may touch if they’re committed to the craft.” ' +
+              'That year she also played The Entertainer in concert band.' },
+      { year: '2024', hours: 2900, title: 'First solo — sophomore year',
+        body: 'Only because it was required. She was too shy to want it, and never had to audition for anything.' },
+      { year: '2026', hours: 4200, title: 'The Capitol, Fourth of July',
+        body: 'Four years on piccolo, first chair. There is television footage.' },
+    ],
   },
 
   {
@@ -113,8 +184,8 @@ export const deck = [
     quote: TODO("Tyler's exact quote — the “still trash” line, verbatim"),
     rank: TODO('actual rank'),
     rankLabel: 'Current rank',
-    punch: 'No coach. No VOD review. Nobody has ever watched him play and told him what he did wrong. ' +
-           'Two and a half thousand hours of finding out for himself.',
+    punch: 'No booklet. No sections. No director to signal the next note. Two and a half thousand hours ' +
+           'of finding out for himself.',
   },
 
   {
@@ -133,10 +204,8 @@ export const deck = [
       { key: 'casual',   at: 2500, label: 'Tyler', note: '2,500 hrs · flat' },
       { key: 'obsessed', at: 4200, label: 'Cole',  note: '4,200 hrs · still climbing' },
     ],
-    /* The answer to "he is just not at 10,000 yet" — drawn, not argued.
-       Extends the flat line to the far right and marks where he lands. */
+    /* The answer to "he is just not at 10,000 yet" — drawn, not argued. */
     projection: { label: 'Tyler at 10,000 hrs', note: 'Same place.' },
-    gapLabel: 'This gap is the presentation',
     foot: 'He is not short of hours. He is short of the thing that makes hours count. ' +
           'Ten thousand of these ends up in the same spot — the line is already flat.',
   },
@@ -163,7 +232,7 @@ export const deck = [
       'Should I move house for better ping?',
     ],
     finalIndex: 11,
-    beat: 'A coach answers that in one sentence. Alone, it takes a year and you still get it wrong.',
+    beat: 'A director answers that with one nod. Alone, it takes a year and you still get it wrong.',
   },
 
   {
@@ -171,33 +240,40 @@ export const deck = [
     id: 'gated',
     nav: 'The price',
     kicker: 'Outliers — the part nobody quotes',
-    title: 'Every one of those questions has an answer. The answers are for sale.',
-    body: 'This is Gladwell’s actual argument, and it is not about effort. Every name in the book was ' +
+    title: 'Every one of those answers has a price. Here is Cole’s.',
+    body: 'This is Gladwell’s actual argument, and it is not about effort. Everyone in that book was ' +
           'standing somewhere that answered them faster than everyone else. Feedback is not free, and ' +
-          'it is not evenly handed out.',
-    /* Street prices, checked against what these things actually sell for. Basis:
-         monitor   240 Hz 1080p/1440p gaming panel
-         coach     per-session VOD review on the usual coaching marketplaces
-         move      average interstate move, 2-3 bedrooms, movers included
-         flute     Yamaha YFL-222 student flute, the cheapest one that holds pitch
-         teacher   $60/lesson x 40 lessons a year x 11 years */
+          'it is not handed out evenly.',
+    /* Cole's own figures, from the group chat. The teacher line is
+       $60 a lesson x 40 lessons a year x her 7 years. */
     gates: [
-      { q: 'A coach who reviews your VOD?',              cost: '$40 / hour' },
-      { q: 'A teacher, once a week, for eleven years?',  cost: '$26,400' },
-      { q: 'A flute that stays in tune enough to hear the mistake?', cost: '$900' },
-      { q: 'A monitor that shows you what happened?',    cost: '$250–400' },
-      { q: 'Move closer to a server so the game tells you the truth?', cost: '$5,000+' },
-      { q: 'Someone free to drive you there every week?', cost: 'Priceless / unbuyable' },
+      { q: 'A beginner flute?',                             cost: '$800' },
+      { q: 'One whose headjoint is shaped to your mouth?',  cost: '$10,000' },
+      { q: 'A piccolo, if you want the harder instrument?', cost: '$13,000' },
+      { q: 'A teacher, once a week, for seven years?',      cost: '≈$16,800' },
+      { q: 'A school with a music program at all?',         cost: 'Depends on the district' },
+      { q: 'A band director who replaces what broke?',      cost: 'Unbuyable' },
     ],
-    /* Figures are the ones Gladwell prints in Outliers, ch. 1-2 — not the
-       inflated versions that get repeated second-hand. Both examples are
-       read here as feedback speed, which is what actually made them work. */
+    /* Read here as feedback speed, which is what actually made them work. */
     examples: [
       { who: 'Bill Gates', what: 'Lakeside, 1968: a terminal that answered instantly, while everyone else waited days for punch cards to come back' },
       { who: 'The Beatles', what: 'Hamburg, 1960–62: 270 nights, five or more hours a night, a live audience reacting to every song' },
-      { who: 'Canadian hockey', what: 'Born in January, picked for the select team at nine — and from then on coached by better coaches than everyone born in December' },
+      { who: 'Cole', what: '“my school was broke so we had band” — orchestra has strings; band does not' },
     ],
     punch: 'Nobody in that book out-willed anyone. *They were all standing closer to the answer.*',
+  },
+
+  /* The story the price list cannot hold. Her words, unedited. */
+  {
+    type: 'takeaway',
+    id: 'piccolo',
+    nav: 'The piccolo',
+    kicker: 'What the list cannot price',
+    lead: 'Her piccolo broke at a football game. It was the school’s, and it was thirteen thousand dollars.',
+    long: true,
+    quote: 'it just SNAPPED on me bc the wood was old and probably rotted… i was sobbing so bad LMFAOO… ' +
+           'so my band director secretly bought a new one so i wouldn’t freak out',
+    attribution: 'Cole',
   },
 
   /* ═══ II — THE MINDSET · Section 2 ═══════════════════════════ */
@@ -210,19 +286,10 @@ export const deck = [
     kicker: 'Section 2 — LinkedIn Learning, “Developing Leadership Mindsets”',
     strike: 'Feedback is something you survive.',
     replace: 'Feedback is the *input*.',
-    body: 'If the hours only count when someone is correcting you, then the single most valuable habit ' +
-          'a leader can build is asking to be corrected — early, often, and before it is comfortable. ' +
-          'The mindset is not toughness. It is treating every correction as the thing that moves the slope.',
-    kicker2: TODO('The specific mindset from the module you are building on — name it and quote a line'),
-  },
-
-  {
-    type: 'statement',
-    id: 'mindset-turn',
-    nav: 'Both directions',
-    lines: ['Asking for feedback', 'changes your own slope.'],
-    accentLines: ['Giving it', 'changes everybody else’s.'],
-    small: 'That second one is the entire job description of a leader.',
+    body: 'If the hours only count when someone is correcting you, then the most valuable habit a leader ' +
+          'can build is asking to be corrected — early, often, and before it is comfortable. Asking changes ' +
+          'your own slope. Giving it changes everybody else’s, which is most of the job.',
+    kicker2: TODO('The specific mindset from the module — name it and quote a line'),
   },
 
   /* ═══ III — THE TABLE · Section 3 ════════════════════════════ */
@@ -234,10 +301,10 @@ export const deck = [
     nav: 'Food security',
     kicker: 'Section 3 — Power of Food, the same argument',
     title: 'Every gate has a name. None of them are willpower.',
-    body: 'Nobody eats badly because they lack willpower, any more than Tyler lacked hours. Eating well ' +
-          'is a skill, and skills need somebody who already knows how. Take that person away and you get ' +
-          'the same flat line — not because people are not trying, but because nothing is telling them ' +
-          'what would work.',
+    body: 'Nobody eats badly because they lack willpower, any more than Tyler lacked hours. Eating well is ' +
+          'a skill, and skills need somebody who already knows how. Take that person away and you get the ' +
+          'same flat line — not because people are not trying, but because nothing is telling them what ' +
+          'would work.',
     gates: [
       { q: 'A grocery store nearby?',                     cost: 'Miles, not minutes' },
       { q: 'Time to cook after two jobs?',                cost: 'Rarely any' },
@@ -247,9 +314,9 @@ export const deck = [
       { q: 'A ride to get there at all?',                 cost: 'Not everyone has one' },
     ],
     examples: [
-      { who: 'A ride',   what: 'A community shuttle on pantry days — the gate that costs the least to open' },
+      { who: 'A ride',   what: 'A community shuttle on pantry days — the gate that costs least to open' },
       { who: 'A recipe', what: 'A thirty-minute card that assumes two jobs and one pan' },
-      { who: 'A person', what: 'Somebody who stands there and shows you once. That is the teacher Cole had.' },
+      { who: 'A person', what: 'Somebody who stands there and shows you once. That is the band director.' },
     ],
     punch: 'Leadership here is not telling people to try harder. *It is being the feedback they were never given.*',
   },
@@ -263,7 +330,7 @@ export const deck = [
     nav: 'Our brand',
     kicker: 'Section 4 — professional brand statement',
     lead: 'So here is the statement we are staking our name to.',
-    long: true,          // a paragraph, not a one-line pull quote
+    long: true,
     quote: 'We do not count hours. We build the loops that make hours count — asking to be corrected ' +
            'before it is comfortable, and being that correction for the people around us. ' +
            'Nobody gets good alone, and we would rather fewer people had to try.',
@@ -286,8 +353,22 @@ export const deck = [
       { k: 'New hires trained', v: 'Every one at the shop' },
     ],
     note: 'Two hundred matches a year is two hundred rooms full of people telling you instantly when you ' +
-          'were wrong. Then he turns around and trains the new hires — which is the same loop, ' +
-          'pointed at somebody else.',
+          'were wrong. Then he turns around and trains the new hires — which is the same loop, pointed ' +
+          'at somebody else.',
+  },
+
+  /* Restored. Her answer when Collin asked for a final quote. */
+  {
+    type: 'takeaway',
+    id: 'cole-takeaway',
+    nav: 'Back to Cole',
+    kicker: 'Back to Cole',
+    lead: 'We asked her what seven years actually looked like.',
+    long: true,
+    quote: 'after school (3pm), i’d do some hw, practice and warm up until practice starts (5:30pm) and it ' +
+           'usually goes to like (8:30)… then i’d practice for like another 2 hours LMFAO… and for fridays ' +
+           'for football/marching band, i was at school until 11 pm',
+    attribution: 'Cole',
   },
 
   {

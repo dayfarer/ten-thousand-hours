@@ -330,6 +330,24 @@ canvas{display:block}
 .gated__punch em{color:var(--oxblood)}
 @media (max-width:900px){.gated__grid{grid-template-columns:1fr}}
 
+/* ═══ plate — a photographed document, annotated ═══════════ */
+.pl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.8rem,4vw,3.4rem);align-items:center}
+.pl__fig{margin:0}
+.pl__fig img{width:100%;height:auto;max-height:68svh;object-fit:contain;background:#fff;
+  border:1px solid var(--hair);box-shadow:0 18px 44px rgba(74,62,44,.16)}
+.pl__fig figcaption{font-family:var(--sans);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:.7rem;text-align:center}
+.pl__body h2{font-size:clamp(1.5rem,3vw,2.5rem);max-width:20ch;margin-bottom:.4rem}
+.pl__list{list-style:none;margin:1.1rem 0;padding:0;counter-reset:pl}
+.pl__list li{display:flex;gap:.9rem;align-items:baseline;padding:.42rem 0;border-bottom:1px solid var(--hair);counter-increment:pl}
+.pl__list li::before{content:counter(pl);font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;
+  color:var(--ink-3);min-width:1.1rem}
+.pl__list em{font-style:normal;font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);min-width:11rem}
+.pl__list span{font-size:.92rem;color:var(--ink-2)}
+@media (max-width:900px){.pl{grid-template-columns:1fr;gap:1.2rem}
+  .pl__fig img{max-height:34svh}.pl__list em{min-width:auto}}
+
 /* ═══ takeaway ═════════════════════════════════════════════ */
 .takeaway{display:flex;flex-direction:column;align-items:center;gap:1.8rem;text-align:center}
 .takeaway__q{margin:0;max-width:30ch}

@@ -78,6 +78,12 @@ function rowsFor (s) {
       push('Chapter number', c.numeral); push('Chapter title', c.title); push('Chapter subtitle', c.sub)
       break
     }
+    case 'plate':
+      push('Label above headline', s.kicker); push('Headline', s.title)
+      push('Photo file (in public/)', s.photo); push('Photo caption', s.photoCaption)
+      s.items.forEach((it, i) => { push(`Item ${i + 1} label`, it.k); push(`Item ${i + 1} text`, it.v) })
+      push('Line underneath', s.note)
+      break
     case 'portrait':
       push('Label above name', s.kicker); push('Name', s.name)
       push('Line under the name', s.role)
@@ -164,6 +170,7 @@ const STRUCTURAL = ['type', 'id', 'nav']
 const HANDLED = {
   hero: ['eyebrow', 'countTo', 'unitLine', 'sub'],
   chapter: [],
+  plate: ['kicker', 'title', 'photo', 'photoCaption', 'items', 'note'],
   portrait: ['kicker', 'name', 'role', 'photo', 'photoCaption', 'facts', 'note'],
   dramatization: ['kicker', 'title', 'sub', 'frames', 'disclaimer'],
   timeline: ['kicker', 'title', 'totalLabel', 'stops'],
