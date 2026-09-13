@@ -72,10 +72,10 @@ export const deck = [
        To use real photos: put them in /public/drama/ and set
        src: '/drama/1.jpg'. Until then a placeholder is drawn. */
     frames: [
-      { title: 'Child, age seven, discovering woodwind', medium: 'Stock photograph', note: 'Dramatization', src: '' },
-      { title: 'Not Cole', medium: 'Stock photograph', note: 'Licensed, 2019', src: '' },
-      { title: 'A different child entirely', medium: 'Stock photograph', note: 'Also licensed', src: '' },
-      { title: 'Woman, thirties, portraying “mother”', medium: 'Paid actor', note: 'Day rate undisclosed', src: '' },
+      { title: 'Child, age seven, discovering woodwind', medium: 'Stock photograph', note: 'Dramatization', src: '/kidplaynflute.png' },
+      { title: 'Not Cole', medium: 'Stock photograph', note: 'Licensed, 2019', src: '/ohterteen.png' },
+      { title: 'A different child entirely', medium: 'Stock photograph', note: 'Also licensed', src: '/teenplayingflute.png' },
+      { title: 'Woman, thirties, portraying “mother”', medium: 'Paid actor', note: 'Day rate undisclosed', src: '/parentFlute.png' },
       { title: 'Photo of Cole in band, pictured', medium: 'Actual photograph', note: 'The one real one', src: '/cole-band.jpg' },
       { title: 'Flute', medium: 'Object', note: 'Verified accurate', verified: true, src: '' },
     ],
