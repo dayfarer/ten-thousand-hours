@@ -49,13 +49,14 @@ export const deck = [
     id: 'cole',
     nav: 'Cole',
     kicker: 'Exhibit the First',
-    name: TODO('Cole — full name'),
+    name: 'Cole',
     role: 'flute',
+    photo: '/cole.jpg',
     photoCaption: 'Photograph of Cole',
     facts: [
-      { k: 'Started', v: TODO('age / year') },
-      { k: 'Years in', v: TODO('e.g. 11') },
-      { k: 'Est. hours', v: TODO('e.g. 4,000') },
+      { k: 'Started', v: 'Age 11, 6th grade' },
+      { k: 'Years in', v: '7' },
+      { k: 'Est. hours', v: '4,200' },
     ],
     note: 'She did not set out to do ten thousand hours. Nobody does. They just keep showing up.',
   },
@@ -251,7 +252,7 @@ export const deck = [
     kicker: 'Back to Cole',
     lead: 'So we asked her what all that time actually taught her.',
     quote: TODO("Cole's takeaway — what she learned about learning. This is the line the whole deck lands on."),
-    attribution: TODO('Cole — full name'),
+    attribution: 'Cole',
   },
 
   /* ─── V — THE APPLICATION ────────────────────────────────────── */
