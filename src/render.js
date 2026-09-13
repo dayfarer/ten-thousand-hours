@@ -208,17 +208,18 @@ const views = {
         <path class="c--casual" data-ink d="M0 412 C150 322 250 250 400 238 C580 224 780 220 1120 218"></path>
         <path class="c--obsessed" data-ink d="M0 412 C170 348 320 274 480 210 C670 136 860 74 1120 30"></path>
         <g data-gap opacity="0">
-          <line class="gap" x1="880" y1="219" x2="880" y2="72"></line>
-          <line class="gap" x1="872" y1="219" x2="888" y2="219"></line>
-          <line class="gap" x1="872" y1="72" x2="888" y2="72"></line>
+          <line class="gap" x1="280" y1="262" x2="1108" y2="262"></line>
+          <line class="gap" x1="1112" y1="218" x2="1112" y2="430"></line>
         </g>
-        <g data-dot="casual" opacity="0"><circle cx="400" cy="238" r="6"></circle><circle cx="400" cy="238" r="13" class="halo"></circle></g>
-        <g data-dot="obsessed" opacity="0"><circle cx="580" cy="178" r="6"></circle><circle cx="580" cy="178" r="13" class="halo"></circle></g>
+        <g data-dot="casual" opacity="0"><circle cx="280" cy="262" r="6"></circle><circle cx="280" cy="262" r="13" class="halo"></circle></g>
+        <g data-dot="obsessed" opacity="0"><circle cx="470" cy="214" r="6"></circle><circle cx="470" cy="214" r="13" class="halo"></circle></g>
+        ${s.projection ? `<g data-dot="proj" opacity="0"><circle cx="1112" cy="218" r="6"></circle><circle cx="1112" cy="218" r="13" class="halo"></circle></g>` : ''}
       </svg>
       ${mark(s, 'casual', 'mk--tyler')}
       ${mark(s, 'obsessed', 'mk--cole')}
-      <span class="mk mk--gap" data-mark><em>${t(s.gapLabel)}</em></span>
+      ${s.projection ? `<span class="mk mk--proj" data-mark><em>${t(s.projection.label)}</em><small>${t(s.projection.note)}</small></span>` : ''}
       <span class="axis axis--x">${t(s.axisX)}</span>
+      ${s.projection ? `<span class="axis axis--max">10,000 hrs</span>` : ''}
       <span class="axis axis--y">${t(s.axisY)}</span>
     </div>
     <p class="pull graph__foot">${t(s.foot)}</p>`,

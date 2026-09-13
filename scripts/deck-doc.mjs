@@ -122,7 +122,8 @@ function rowsFor (s) {
       push('Label above headline', s.kicker); push('Headline', s.title)
       s.curves.forEach((c, i) => { push(`Legend ${i + 1} name`, c.label); push(`Legend ${i + 1} quote`, c.desc) })
       s.markers.forEach((m, i) => { push(`Dot ${i + 1} name`, m.label); push(`Dot ${i + 1} note`, m.note) })
-      push('Label on the gap between the lines', s.gapLabel)
+      if (s.projection) { push('Projection marker label', s.projection.label); push('Projection marker note', s.projection.note) }
+      if (s.gapLabel) push('Label on the gap between the lines', s.gapLabel)
       push('Bottom axis label', s.axisX); push('Side axis label', s.axisY)
       push('Line under the graph', s.foot)
       break
@@ -170,7 +171,7 @@ const HANDLED = {
   claim: ['kicker', 'big', 'title', 'body', 'footnote'],
   correction: ['kicker', 'strike', 'replace', 'body', 'kicker2'],
   exhibit: ['kicker', 'name', 'role', 'countTo', 'unit', 'punch', 'rankLabel', 'rank', 'quote'],
-  graph: ['kicker', 'title', 'curves', 'markers', 'gapLabel', 'axisX', 'axisY', 'foot'],
+  graph: ['kicker', 'title', 'curves', 'markers', 'projection', 'gapLabel', 'axisX', 'axisY', 'foot'],
   spiral: ['kicker', 'title', 'sub', 'questions', 'finalIndex', 'beat'],
   gated: ['kicker', 'title', 'gates', 'body', 'examples', 'punch'],
   takeaway: ['kicker', 'lead', 'quote', 'attribution'],
