@@ -39,4 +39,4 @@ Builds `dist/` and uploads it. Needs `npx wrangler login` on the Cloudflare acco
 - [x] Section 1 — one major lesson from *Outliers* (ch. 1–3)
 - [ ] Section 2 — connect it to the LinkedIn Learning module "Developing Leadership Mindsets"
 - [x] Section 3 — how it applies to food insecurity and/or community service
-- [ ] Section 4 — a professional brand statement for the group as student leaders
+- [x] Section 4 — a professional brand statement for the group as student leaders

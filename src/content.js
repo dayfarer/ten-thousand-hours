@@ -283,6 +283,39 @@ export const deck = [
   },
 
   {
+    type: 'takeaway',
+    id: 'brand-statement',
+    nav: 'Our brand',
+    kicker: 'Section 4 — professional brand',
+    lead: 'So here is the statement we are staking our name to.',
+    quote: 'We care about how we spend our hours, not just how many we log. ' +
+           "Getting good at *Siege* and getting good at flute turned out to be the same problem: hours alone don't do it. " +
+           'Deliberate practice has to be practiced too, on purpose, with feedback, every time. ' +
+           "As student leaders, that's the mindset we're building: spending our time where it actually compounds, " +
+           'and helping the people around us find the same kind of leverage in theirs. ' +
+           'The mindset we are most focused on developing ourselves is that same intentional, deliberate practice, turned inward.',
+    attribution: 'Collin, Bryan, Bonga, Eduard, and Cole',
+  },
+
+  {
+    type: 'portrait',
+    id: 'eduard-linkedin',
+    nav: 'Eduard · LinkedIn',
+    kicker: 'Section 5 — LinkedIn profile draft',
+    name: 'Eduard Varga',
+    role: 'Honors Finance Student, UNF',
+    photoCaption: 'linkedin.com/in/eduardvarga',
+    facts: [
+      { k: 'School', v: 'UNF, Coggin Honors' },
+      { k: 'Major', v: 'Finance' },
+      { k: 'Matches reffed', v: '200+' },
+    ],
+    note: '“Honors Finance Student at UNF: building habits one repetition at a time.” ' +
+          'Coggin Honors finance major who referees 200+ soccer matches a year, trains new hires at a pizza shop, ' +
+          'and volunteers in animal welfare and senior care.',
+  },
+
+  {
     type: 'close',
     id: 'close',
     nav: 'End',
