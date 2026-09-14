@@ -213,30 +213,6 @@ export const deck = [
           'Ten thousand of these ends up in the same spot — the line is already flat.',
   },
 
-  {
-    type: 'spiral',
-    id: 'spiral',
-    nav: 'His own coach',
-    kicker: 'Marginalia — what it sounds like with nobody to ask',
-    title: 'With no coach, you have to become one',
-    sub: 'So he interrogates everything himself. It starts reasonable.',
-    questions: [
-      'Which strategies actually work?',
-      'Which ones only look like they work?',
-      'What are the optimal peek angles?',
-      'Which movement tech makes me harder to hit?',
-      'Am I holding the wrong angles on defense?',
-      'Is my sensitivity costing me flicks?',
-      'Is my mouse polling rate too low?',
-      'Is my monitor adding input lag?',
-      'What temperature should my room be to lock in?',
-      'Am I playing worse after 9pm?',
-      'How far am I from the nearest server?',
-      'Should I move house for better ping?',
-    ],
-    finalIndex: 11,
-    beat: 'A director answers that with one nod. Alone, it takes a year and you still get it wrong.',
-  },
 
   {
     type: 'gated',
@@ -266,21 +242,33 @@ export const deck = [
     punch: 'Nobody in that book out-willed anyone. *They were all standing closer to the answer.*',
   },
 
-  /* The story the price list cannot hold. Her words, unedited. */
-  {
-    type: 'takeaway',
-    id: 'piccolo',
-    nav: 'The piccolo',
-    kicker: 'What the list cannot price',
-    lead: 'Her piccolo broke at a football game. It was the school’s, and it was thirteen thousand dollars.',
-    long: true,
-    quote: 'it just SNAPPED on me bc the wood was old and probably rotted… i was sobbing so bad LMFAOO… ' +
-           'so my band director secretly bought a new one so i wouldn’t freak out',
-    attribution: 'Cole',
-  },
 
   /* ═══ II — THE MINDSET · Section 2 ═══════════════════════════ */
   { type: 'chapter', id: 'ch-2', nav: 'II · The Mindset' },
+  {
+    type: 'spiral',
+    id: 'spiral',
+    nav: 'His own coach',
+    kicker: 'Marginalia — what it sounds like with nobody to ask',
+    title: 'With no coach, you have to become one',
+    sub: 'So he interrogates everything himself. It starts reasonable.',
+    questions: [
+      'Which strategies actually work?',
+      'Which ones only look like they work?',
+      'What are the optimal peek angles?',
+      'Which movement tech makes me harder to hit?',
+      'Am I holding the wrong angles on defense?',
+      'Is my sensitivity costing me flicks?',
+      'Is my mouse polling rate too low?',
+      'Is my monitor adding input lag?',
+      'What temperature should my room be to lock in?',
+      'Am I playing worse after 9pm?',
+      'How far am I from the nearest server?',
+      'Should I move house for better ping?',
+    ],
+    finalIndex: 11,
+    beat: 'A director answers that with one nod. Alone, it takes a year and you still get it wrong.',
+  },
 
   {
     type: 'correction',
@@ -290,9 +278,18 @@ export const deck = [
     strike: 'Feedback is something you survive.',
     replace: 'Feedback is the *input*.',
     body: 'If hours only count when someone’s correcting you, then the best habit a leader can build is ' +
-          'asking to be corrected: early and often, before it’s comfortable. Asking changes your own slope. ' +
-          'Giving it changes everyone else’s, which is most of the job.',
+          'asking to be corrected: early and often, before it’s comfortable.',
     kicker2: TODO('The specific mindset from the module — name it and quote a line'),
+  },
+
+
+  {
+    type: 'statement',
+    id: 'mindset-turn',
+    nav: 'Both directions',
+    lines: ['Asking to be corrected', 'changes your own slope.'],
+    accentLines: ['Giving it', 'changes everybody else’s.'],
+    small: 'That second one is most of what a leader is actually for.',
   },
 
   /* ═══ III — THE TABLE · Section 3 ════════════════════════════ */
@@ -321,6 +318,43 @@ export const deck = [
       { who: 'A person', what: 'Somebody who stands there and shows you once. That’s the band director.' },
     ],
     punch: 'Leadership here isn’t telling people to try harder. *It’s being the feedback they never got.*',
+  },
+
+
+  /* Section 3 asks for the reflection applied, so this is the doing half:
+     the same gates, priced in what they would cost us rather than what
+     they cost somebody else. A draft for the group to argue with. */
+  {
+    type: 'gated',
+    id: 'food-actions',
+    nav: 'What we can open',
+    kicker: 'Section 3 — the doing half',
+    title: 'Three gates we could actually open this semester.',
+    body: 'None of these teach anybody to cook. They put somebody next to the person who is already ' +
+          'trying, which is the only thing that ever moved either of our two curves.',
+    gates: [
+      { q: 'A ride on pantry days',                        cost: 'A driver, two hours' },
+      { q: 'A card that assumes two jobs and one pan',      cost: 'One afternoon' },
+      { q: 'Somebody who stands there and shows you once',  cost: 'An hour, and knowing how' },
+      { q: 'Doing it again next month',                     cost: 'The hard part' },
+    ],
+    examples: [
+      { who: 'Cole', what: 'had somebody in the room correcting her every week for seven years' },
+      { who: 'Tyler', what: 'has two and a half thousand hours and nobody' },
+    ],
+    punch: 'We cannot buy anyone ten thousand hours. *We can be the person in the room.*',
+  },
+  /* The story the price list cannot hold. Her words, unedited. */
+  {
+    type: 'takeaway',
+    id: 'piccolo',
+    nav: 'The piccolo',
+    kicker: 'What the list cannot price',
+    lead: 'Her piccolo broke at a football game. It was the school’s, and it was thirteen thousand dollars.',
+    long: true,
+    quote: 'it just SNAPPED on me bc the wood was old and probably rotted… i was sobbing so bad LMFAOO… ' +
+           'so my band director secretly bought a new one so i wouldn’t freak out',
+    attribution: 'Cole',
   },
 
   /* ═══ IV — THE BRAND · Section 4 ═════════════════════════════ */
