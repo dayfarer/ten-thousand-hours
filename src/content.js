@@ -386,12 +386,11 @@ export const deck = [
     facts: [
       { k: 'School', v: 'UNF, Coggin Honors' },
       { k: 'Major', v: 'Finance' },
-      { k: 'Matches reffed', v: '200+' },
       { k: 'New hires trained', v: 'Every one at the shop' },
     ],
-    note: 'Two hundred matches a year is two hundred rooms full of people telling you instantly when you ' +
-          'were wrong. Then he turns around and trains the new hires, which is the same loop pointed ' +
-          'at somebody else.',
+    note: 'He coaches the new hires at the pizza shop. Nobody gets faster because somebody told them to ' +
+          'hurry, so he works the line beside them and says what to change while the shift is still ' +
+          'running. That’s how their hours start counting for something.',
     quote: 'Start thy purse to fattening… Control thy expenditures… Make thy gold multiply.',
   },
 
