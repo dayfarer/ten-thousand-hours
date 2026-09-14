@@ -171,7 +171,7 @@ export const deck = [
       { year: '2024', hours: 2900, title: 'First solo — sophomore year',
         body: 'Only because it was required. She was too shy to want it, and never had to audition for anything.' },
       { year: '2026', hours: 4200, title: 'The Capitol, Fourth of July',
-        body: 'Four years on piccolo, first chair. There is television footage.' },
+        body: 'Four years on piccolo, first chair. There’s actual TV footage.' },
     ],
   },
 
@@ -260,7 +260,7 @@ export const deck = [
     /* Read here as feedback speed, which is what actually made them work. */
     examples: [
       { who: 'Bill Gates', what: 'Lakeside, 1968: a terminal that answered instantly, while everyone else waited days for punch cards to come back' },
-      { who: 'The Beatles', what: 'Hamburg, 1960–62: 270 nights, five or more hours a night, a live audience reacting to every song' },
+      { who: 'The Beatles', what: 'Hamburg, 1960 to 1962: 270 nights, five or more hours a night, a live audience reacting to every song' },
       { who: 'Cole', what: '“my school was broke so we had band” — orchestra has strings; band does not' },
     ],
     punch: 'Nobody in that book out-willed anyone. *They were all standing closer to the answer.*',
@@ -289,9 +289,9 @@ export const deck = [
     kicker: 'Section 2 — LinkedIn Learning, “Developing Leadership Mindsets”',
     strike: 'Feedback is something you survive.',
     replace: 'Feedback is the *input*.',
-    body: 'If the hours only count when someone is correcting you, then the most valuable habit a leader ' +
-          'can build is asking to be corrected — early, often, and before it is comfortable. Asking changes ' +
-          'your own slope. Giving it changes everybody else’s, which is most of the job.',
+    body: 'If hours only count when someone’s correcting you, then the best habit a leader can build is ' +
+          'asking to be corrected: early and often, before it’s comfortable. Asking changes your own slope. ' +
+          'Giving it changes everyone else’s, which is most of the job.',
     kicker2: TODO('The specific mindset from the module — name it and quote a line'),
   },
 
@@ -306,8 +306,7 @@ export const deck = [
     title: 'Every gate has a name. None of them are willpower.',
     body: 'Nobody eats badly because they lack willpower, any more than Tyler lacked hours. Eating well is ' +
           'a skill, and skills need somebody who already knows how. Take that person away and you get the ' +
-          'same flat line — not because people are not trying, but because nothing is telling them what ' +
-          'would work.',
+          'same flat line. People are trying. Nothing is telling them what would work.',
     gates: [
       { q: 'A grocery store nearby?',                     cost: 'Miles, not minutes' },
       { q: 'Time to cook after two jobs?',                cost: 'Rarely any' },
@@ -317,11 +316,11 @@ export const deck = [
       { q: 'A ride to get there at all?',                 cost: 'Not everyone has one' },
     ],
     examples: [
-      { who: 'A ride',   what: 'A community shuttle on pantry days — the gate that costs least to open' },
+      { who: 'A ride',   what: 'A community shuttle on pantry days: the gate that costs least to open' },
       { who: 'A recipe', what: 'A thirty-minute card that assumes two jobs and one pan' },
-      { who: 'A person', what: 'Somebody who stands there and shows you once. That is the band director.' },
+      { who: 'A person', what: 'Somebody who stands there and shows you once. That’s the band director.' },
     ],
-    punch: 'Leadership here is not telling people to try harder. *It is being the feedback they were never given.*',
+    punch: 'Leadership here isn’t telling people to try harder. *It’s being the feedback they never got.*',
   },
 
   /* ═══ IV — THE BRAND · Section 4 ═════════════════════════════ */
@@ -332,11 +331,11 @@ export const deck = [
     id: 'brand-statement',
     nav: 'Our brand',
     kicker: 'Section 4 — professional brand statement',
-    lead: 'So here is the statement we are staking our name to.',
+    lead: 'So here’s the statement we’re staking our name to.',
     long: true,
-    quote: 'We do not count hours. We build the loops that make hours count — asking to be corrected ' +
-           'before it is comfortable, and being that correction for the people around us. ' +
-           'Nobody gets good alone, and we would rather fewer people had to try.',
+    quote: 'We don’t count hours. We build the loops that make hours count: asking to be corrected ' +
+           'before it’s comfortable, and being that correction for the people around us. ' +
+           'Nobody gets good alone, and we’d rather fewer people had to try.',
     attribution: 'Collin, Bryan, Bonga, Eduard, and Cole',
   },
 
@@ -356,7 +355,7 @@ export const deck = [
       { k: 'New hires trained', v: 'Every one at the shop' },
     ],
     note: 'Two hundred matches a year is two hundred rooms full of people telling you instantly when you ' +
-          'were wrong. Then he turns around and trains the new hires — which is the same loop, pointed ' +
+          'were wrong. Then he turns around and trains the new hires, which is the same loop pointed ' +
           'at somebody else.',
   },
 
