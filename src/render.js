@@ -127,6 +127,9 @@ const views = {
     </div>
     <p class="drama__note" data-drama-note>${t(s.disclaimer)}</p>`,
 
+  /* The track is a melodic line: it travels past a fixed playhead, bar
+     lines tick by, and each stop is a note head sitting ON the curve.
+     Geometry is measured in main.js — the path is empty until then. */
   timeline: s => `
     <div class="tl__head">
       <div>${kicker(s.kicker)}<h2 data-rise>${t(s.title)}</h2></div>
@@ -135,16 +138,23 @@ const views = {
         <em data-tl-total>0</em>
       </div>
     </div>
-    <div class="tl__track" data-tl-track>
-      <span class="tl__line"><i data-tl-line></i></span>
-      ${s.stops.map(st => `
-        <article class="stop" data-stop data-hours="${st.hours}">
-          <span class="stop__hrs">${st.hours.toLocaleString()} hrs</span>
-          <span class="stop__dot"></span>
-          <em class="stop__year">${t(st.year)}</em>
-          <h3>${t(st.title)}</h3>
-          <p>${t(st.body)}</p>
-        </article>`).join('')}
+    <div class="tl__stage" data-tl-stage>
+      <span class="tl__play" aria-hidden="true"></span>
+      <div class="tl__track" data-tl-track>
+        <svg class="tl__ink" data-tl-svg aria-hidden="true">
+          <g data-tl-notches></g>
+          <path class="tl__curve" data-tl-path></path>
+          <path class="tl__curve tl__curve--lit" data-tl-lit></path>
+        </svg>
+        ${s.stops.map((st, i) => `
+          <article class="stop" data-stop data-hours="${st.hours}" data-i="${i}">
+            <span class="stop__note" aria-hidden="true"></span>
+            <span class="stop__hrs">${st.hours.toLocaleString()} hrs</span>
+            <em class="stop__year">${t(st.year)}</em>
+            <h3>${t(st.title)}</h3>
+            <p>${t(st.body)}</p>
+          </article>`).join('')}
+      </div>
     </div>`,
 
   statement: s => `

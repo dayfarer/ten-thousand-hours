@@ -192,36 +192,114 @@ $$('[data-count]').forEach(el => {
     .to('.hero__head, .hero__foot', { opacity: 1, duration: 1, stagger: 0.1 }, 0.2)
 }
 
-/* ── timeline: horizontal track + accumulating total ──────── */
+/* ── timeline: a melodic line travelling past a fixed playhead ──
+   The curve is built through the stops themselves, so a note head is on
+   the line by construction rather than by nudging pixels. It climbs as
+   the hours add up and squiggles on the way; bar lines tick past to give
+   the travel something to measure itself against. */
 {
   const track = $('[data-tl-track]')
   if (track) {
     const section = track.closest('[data-sheet]')
-    const span = () => Math.max(0, track.scrollWidth - innerWidth + 40)
+    const stage = $('[data-tl-stage]')
+    const svg = $('[data-tl-svg]')
+    const path = $('[data-tl-path]')
+    const lit = $('[data-tl-lit]')
+    const notches = $('[data-tl-notches]')
     const total = $('[data-tl-total]')
     const stops = $$('[data-stop]', track)
-    const maxHours = Math.max(...stops.map(s => +s.dataset.hours))
+    const hoursAt = stops.map(s => +s.dataset.hours)
 
-    // give the sheet extra scroll length so the track can travel
-    const drift = gsap.to(track, {
-      x: () => -span(), ease: 'none',
-      scrollTrigger: {
-        ...rangeOf(section),
-        scrub: 0.8, invalidateOnRefresh: true,
-        onUpdate: self => {
-          const v = Math.round(self.progress * maxHours)
-          total.textContent = v.toLocaleString()
+    /* one smooth cubic through every point, Catmull-Rom converted to bezier */
+    const through = pts => pts.map((p, i) => {
+      if (!i) return `M${p.x} ${p.y}`
+      const a = pts[i - 1], p0 = pts[i - 2] || a, p3 = pts[i + 1] || p
+      const c1 = { x: a.x + (p.x - p0.x) / 6, y: a.y + (p.y - p0.y) / 6 }
+      const c2 = { x: p.x - (p3.x - a.x) / 6, y: p.y - (p3.y - a.y) / 6 }
+      return `C${c1.x} ${c1.y} ${c2.x} ${c2.y} ${p.x} ${p.y}`
+    }).join(' ')
+
+    let travel = 0, playX = 0
+    const measure = () => {
+      const H = stage.clientHeight
+      const gap = Math.max(300, Math.min(560, innerWidth * 0.46))
+      playX = Math.round(innerWidth * 0.3)
+      const narrow = innerWidth < 700
+      const mid = Math.round(H * (narrow ? 0.3 : 0.36))   // leaves room for the longest card below
+      const amp = Math.min(52, H * 0.12)          // how far the line wanders
+      const climb = Math.min(84, H * 0.2)         // how far it rises overall
+      const n = stops.length
+      const pts = stops.map((_, i) => ({
+        x: playX + i * gap,
+        // rises with the hours, alternating above and below its own trend
+        y: mid + climb / 2 - (i / Math.max(1, n - 1)) * climb + (i % 2 ? amp : -amp) * 0.7,
+      }))
+      travel = (n - 1) * gap
+      const W = playX + travel + Math.max(320, innerWidth * 0.4)
+
+      svg.setAttribute('width', W); svg.setAttribute('height', H)
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`)
+      track.style.width = W + 'px'
+      const d = through(pts)
+      path.setAttribute('d', d); lit.setAttribute('d', d)
+
+      // bar lines: short ticks square to the curve, the way a score is barred
+      const len = path.getTotalLength()
+      let ticks = ''
+      for (let l = 6; l < len; l += 34) {
+        const a = path.getPointAtLength(l), b = path.getPointAtLength(Math.min(len, l + 1))
+        const ang = Math.atan2(b.y - a.y, b.x - a.x) + Math.PI / 2
+        const h = 7
+        ticks += `<line x1="${(a.x - Math.cos(ang) * h).toFixed(1)}" y1="${(a.y - Math.sin(ang) * h).toFixed(1)}"
+                        x2="${(a.x + Math.cos(ang) * h).toFixed(1)}" y2="${(a.y + Math.sin(ang) * h).toFixed(1)}"/>`
+      }
+      notches.innerHTML = ticks
+
+      stops.forEach((el, i) => { el.style.left = pts[i].x + 'px'; el.style.top = pts[i].y + 'px' })
+      lit.style.strokeDasharray = len
+      return len
+    }
+
+    let pathLen = measure()
+    const relayout = () => { pathLen = measure(); ScrollTrigger.refresh() }
+    addEventListener('resize', relayout)
+    document.fonts?.ready.then(relayout)
+
+    const lerp = p => {                            // hours between the two nearest stops
+      const t = p * (hoursAt.length - 1)
+      const i = Math.min(hoursAt.length - 2, Math.floor(t))
+      return Math.round(hoursAt[i] + (hoursAt[i + 1] - hoursAt[i]) * (t - i))
+    }
+
+    if (reduced) {
+      lit.style.strokeDashoffset = 0
+      stops.forEach(el => el.classList.add('is-lit'))
+      total.textContent = hoursAt[hoursAt.length - 1].toLocaleString()
+    } else {
+      gsap.set(stops, { opacity: 0, y: 24 })
+      lit.style.strokeDashoffset = pathLen          // nothing inked before the first note
+      stops[0].classList.add('is-lit')              // the first note starts on the playhead
+      total.textContent = hoursAt[0].toLocaleString()
+      gsap.to(track, {
+        x: () => -travel, ease: 'none',
+        scrollTrigger: {
+          ...rangeOf(section), scrub: 0.8, invalidateOnRefresh: true,
+          onRefresh: () => { pathLen = measure() },
+          onUpdate: self => {
+            const p = self.progress
+            total.textContent = lerp(p).toLocaleString()
+            // the curve begins at the playhead, so the fraction already
+            // past it is the scroll progress itself
+            lit.style.strokeDashoffset = pathLen * (1 - Math.min(1, p + 0.004))
+            stops.forEach((el, i) => {
+              const at = i / Math.max(1, stops.length - 1)
+              el.classList.toggle('is-lit', p >= at - 0.02)
+            })
+          },
         },
-      },
-    })
-    gsap.to('[data-tl-line]', {
-      scaleX: 1, ease: 'none',
-      scrollTrigger: { ...rangeOf(section), scrub: 0.8 },
-    })
-    stops.forEach(stop => {
-      gsap.set(stop, { y: 40, opacity: 0 })
-      inView(stop, () => gsap.to(stop, { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out' }), '0px')
-    })
+      })
+      stops.forEach(el => inView(el, () => gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }), '0px'))
+    }
   }
 }
 

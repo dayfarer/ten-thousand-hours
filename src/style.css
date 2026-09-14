@@ -200,15 +200,39 @@ canvas{display:block}
 .tl__total{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem}
 .tl__total span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
 .tl__total em{font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1;color:var(--forest)}
-.tl__track{display:flex;gap:clamp(2rem,4vw,4rem);width:max-content;position:relative;padding-right:var(--pad)}
-.tl__line{position:absolute;left:0;right:0;top:6.2rem;height:1px;background:var(--hair)}
-.tl__line i{position:absolute;inset:0;background:var(--forest);transform-origin:0 50%;transform:scaleX(0);display:block}
-.stop{width:clamp(15rem,20vw,17rem);flex:0 0 auto;display:flex;flex-direction:column}
-.stop__hrs{height:6.2rem;display:flex;align-items:flex-end;padding-bottom:.8rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.stop__dot{width:11px;height:11px;border-radius:50%;background:var(--forest);margin-left:-5px}
-.stop__year{font-size:2.4rem;line-height:1;margin-top:1.3rem;display:block}
-.stop h3{font-size:1.3rem;margin-top:.5rem}
-.stop p{font-size:.92rem;color:var(--ink-3);line-height:1.6;margin-top:.5rem}
+/* the line travels; the playhead does not */
+.tl__stage{position:relative;height:clamp(340px,50svh,500px);
+  margin-inline:calc(var(--pad) * -1);overflow:hidden}
+.tl__play{position:absolute;left:30%;top:0;bottom:0;width:1px;background:var(--rule,var(--ink-3));
+  opacity:.5;z-index:2}
+.tl__play::before,.tl__play::after{content:"";position:absolute;left:-3.5px;width:8px;height:8px;
+  border-radius:50%;background:var(--brass)}
+.tl__play::before{top:0}
+.tl__play::after{bottom:0}
+.tl__track{position:absolute;inset:0 auto 0 0;will-change:transform}
+.tl__ink{position:absolute;left:0;top:0;overflow:visible}
+.tl__curve{fill:none;stroke:var(--hair);stroke-width:1.5;stroke-linecap:round}
+.tl__curve--lit{stroke:var(--forest);stroke-width:2}
+.tl__ink [data-tl-notches] line{stroke:var(--hair);stroke-width:1}
+
+.stop{position:absolute;width:clamp(13rem,19vw,16rem);transform:translate(-1.2rem,0)}
+.stop__note{position:absolute;left:0;top:0;width:13px;height:13px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--ink-3);
+  transform:translate(-50%,-50%) rotate(-18deg);transition:background .35s,border-color .35s,scale .35s}
+.stop.is-lit .stop__note{background:var(--forest);border-color:var(--forest);scale:1.18}
+.stop__hrs{display:block;margin-top:1.15rem;font-size:.66rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.stop__year{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1;margin-top:.35rem;display:block;
+  color:var(--ink-3);transition:color .35s}
+.stop.is-lit .stop__year{color:var(--ink)}
+.stop h3{font-size:1.12rem;margin-top:.4rem;text-wrap:balance}
+.stop p{font-size:.88rem;color:var(--ink-3);line-height:1.55;margin-top:.4rem}
+@media (max-width:700px){
+  .tl__stage{height:min(62svh,520px)}
+  .stop{width:12.5rem}
+  .stop p{font-size:.82rem;line-height:1.5}
+  .tl__play{left:22%}
+}
 
 /* ═══ statement ════════════════════════════════════════════ */
 .stmt{display:flex;flex-direction:column;gap:1.8rem;align-items:flex-start}
