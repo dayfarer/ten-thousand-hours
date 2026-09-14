@@ -147,7 +147,7 @@ const views = {
           <path class="tl__curve tl__curve--lit" data-tl-lit></path>
         </svg>
         ${s.stops.map((st, i) => `
-          <article class="stop" data-stop data-hours="${st.hours}" data-i="${i}">
+          <article class="stop" data-stop data-checkpoint data-hours="${st.hours}" data-i="${i}">
             <span class="stop__note" aria-hidden="true"></span>
             <span class="stop__hrs">${st.hours.toLocaleString()} hrs</span>
             <em class="stop__year">${t(st.year)}</em>
@@ -246,10 +246,9 @@ const views = {
       <p class="lede" data-rise>${t(s.sub)}</p>
     </div>
     <div class="spiral__field" data-spiral>
-      ${s.questions.map((q, i) => `<span class="q" data-q="${i}">${esc(q)}</span>`).join('')}
+      ${s.questions.map((q, i) => `<span class="q" data-checkpoint data-q="${i}">${esc(q)}</span>`).join('')}
     </div>
     <div class="spiral__final" data-final>
-      <span class="q q--final">${esc(s.questions[s.finalIndex])}</span>
       <p class="pull">${t(s.beat)}</p>
     </div>`,
 

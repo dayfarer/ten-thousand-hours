@@ -53,7 +53,7 @@ export function domLayout(deckEl) {
   const items = [...deckEl.children].map(el => ({
     kind: el.matches('[data-sheet]') ? 'sheet' : el.classList.contains('spacer') ? 'spacer' : 'other',
     h: el.offsetHeight,
-    checkpoints: el.querySelectorAll?.('[data-stop]').length || 0,
+    checkpoints: el.querySelectorAll?.('[data-checkpoint]').length || 0,
   }))
   return layoutFrom(items, document.documentElement.scrollHeight - innerHeight)
 }

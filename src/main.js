@@ -328,24 +328,61 @@ $$('[data-count]').forEach(el => {
   }
 }
 
-/* ── spiral: questions accumulate as marginalia ───────────── */
+/* ── spiral: the camera falls into it, one question at a time ──
+   Each question sits further round and further in than the last, at
+   K times the radius and K times the size. Zooming by 1/K^a and
+   centring on question `a` therefore renders whichever one you are on
+   at full size, with the one behind you flying outward and the next
+   already small near the middle. The questions get sillier as they get
+   smaller, which is the joke the slide is making. */
 {
   const field = $('[data-spiral]')
   if (field) {
     const qs = $$('.q', field)
     const section = field.closest('[data-sheet]')
-    // scatter them across the field, avoiding the heading block
-    qs.forEach((q, i) => {
-      const row = i / qs.length
-      q.style.left = `${6 + ((i * 37) % 62)}%`
-      q.style.top = `${30 + row * 52}%`
-      q.style.transform = `rotate(${(i % 2 ? 1 : -1) * (0.6 + (i % 4) * 0.5)}deg)`
-    })
-    gsap.timeline({
-      scrollTrigger: { ...rangeOf(section), scrub: 0.6 },
-    })
-      .to(qs, { opacity: 1, duration: 0.4, stagger: 0.35, ease: 'none' }, 0)
-      .to('[data-final]', { opacity: 1, duration: 1, ease: 'power2.out' }, '>-0.5')
+    const head = $('.spiral__head', section)
+    const last = qs.length - 1
+    const K = 0.58            // each step inward
+    const DTH = 2.2           // radians between neighbours, so they do not stack
+    const TH0 = -0.9
+
+    if (reduced) {
+      field.classList.add('is-static')
+      $('[data-final]').style.opacity = 1
+    } else {
+      const place = a => {
+        const R = Math.min(innerWidth, innerHeight) * 0.42
+        const ca = Math.cos(TH0 + a * DTH), sa = Math.sin(TH0 + a * DTH)
+        qs.forEach((q, i) => {
+          const d = i - a
+          if (d < -1.6 || d > 4.2) { q.style.opacity = 0; return }   // outside the frame
+          const s = Math.pow(K, d)
+          const th = TH0 + i * DTH
+          // difference between this question's place on the spiral and the
+          // camera's, once the whole plane is scaled back up by 1 / K^a
+          q.style.transform =
+            `translate(-50%,-50%) translate(${(R * (s * Math.cos(th) - ca)).toFixed(1)}px,` +
+            `${(R * (s * Math.sin(th) - sa)).toFixed(1)}px) scale(${s.toFixed(4)})`
+          q.style.opacity = (d < -0.25 ? Math.max(0, 1 + (d + 0.25) / 1.35)
+                           : d > 0.7  ? Math.max(0.1, 1 - (d - 0.7) / 3.2)
+                           : 1).toFixed(3)
+          q.classList.toggle('is-here', Math.abs(d) < 0.4)
+        })
+      }
+      place(0)
+      gsap.to({}, {
+        scrollTrigger: {
+          ...rangeOf(section), scrub: 0.5, invalidateOnRefresh: true,
+          onUpdate: self => {
+            place(self.progress * last)
+            // the heading steps aside once you are inside the spiral
+            head.style.opacity = Math.max(0, 1 - self.progress * 5).toFixed(2)
+            $('[data-final]').style.opacity = Math.max(0, (self.progress - 0.86) / 0.14).toFixed(2)
+          },
+        },
+      })
+      addEventListener('resize', () => place(0))
+    }
   }
 }
 

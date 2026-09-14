@@ -25,7 +25,10 @@ export function walk (deck, meta, chapters) {
       const p = path ? `${path}.${k}` : k
       if (isTodo(v)) out.push({ path: p, value: '', todo: v.text })
       else if (typeof v === 'string') out.push({ path: p, value: v, todo: null })
-      else if (Array.isArray(v)) v.forEach((x, i) => x && typeof x === 'object' && visit(x, `${p}.${i}`))
+      else if (Array.isArray(v)) v.forEach((x, i) => {
+        if (typeof x === 'string') out.push({ path: `${p}.${i}`, value: x, todo: null })
+        else if (x && typeof x === 'object') visit(x, `${p}.${i}`)
+      })
       else if (v && typeof v === 'object') visit(v, p)
     }
   }
