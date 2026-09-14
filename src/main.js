@@ -148,6 +148,26 @@ if (!reduced) {
   onScroll()
 }
 
+/* ── portraits with a second photograph ───────────────────
+   The swap only becomes available once the alternate has actually
+   decoded, so a portrait whose second file is missing behaves exactly
+   like one that never had it: no pointer, no dot, no dead click. */
+$$('[data-swap]').forEach(plate => {
+  const alt = $('.plate__alt', plate)
+  if (!alt) return
+  const arm = () => {
+    if (!alt.naturalWidth) return
+    plate.classList.add('can-swap')
+    const toggle = () => plate.classList.toggle('is-alt')
+    plate.addEventListener('click', toggle)
+    plate.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() }
+    })
+  }
+  if (alt.complete) arm()
+  else alt.addEventListener('load', arm, { once: true })
+})
+
 /* ── generic reveals ─────────────────────────────────────── */
 {
   /* The observer ignores the bottom 10% of the screen so nothing pops in

@@ -381,6 +381,7 @@ export const deck = [
     name: 'Eduard Varga',
     role: 'Honors Finance Student, UNF',
     photo: '/eduard.png',
+    photoAlt: '/eduard-beard.jpg',   // click the plate to swap; inert until the file exists
     photoCaption: 'linkedin.com/in/eduardvarga',
     facts: [
       { k: 'School', v: 'UNF, Coggin Honors' },

@@ -85,8 +85,9 @@ const views = {
   portrait: s => `
     <div class="portrait">
       <figure class="plate" data-rise>
-        <div class="plate__inner">
-          ${s.photo ? `<img src="${esc(asset(s.photo))}" alt="${esc(s.name)}" loading="lazy">` : `
+        <div class="plate__inner"${s.photoAlt ? ' data-swap tabindex="0" role="button" aria-label="Show the other photograph"' : ''}>
+          ${s.photoAlt ? `<img class="plate__alt" src="${esc(asset(s.photoAlt))}" alt="" aria-hidden="true" loading="lazy">` : ''}
+          ${s.photo ? `<img class="plate__main" src="${esc(asset(s.photo))}" alt="${esc(s.name)}" loading="lazy">` : `
           <svg viewBox="0 0 24 24" width="86" fill="none" stroke="currentColor" stroke-width=".9">
             <rect x="3" y="5" width="18" height="14"></rect><circle cx="8.5" cy="10.5" r="1.6"></circle>
             <path d="M21 15l-5.5-5.5L5 19"></path>

@@ -148,6 +148,18 @@ canvas{display:block}
 }
 .plate__inner::after{content:"";position:absolute;inset:13px;border:1px solid var(--hair-2)}
 .plate__inner img{width:100%;height:100%;object-fit:cover}
+/* a second photograph, revealed on click. The affordance only appears once
+   the alternate has actually loaded, so a missing file changes nothing. */
+.plate__alt{position:absolute;inset:0}
+.plate__main{position:relative;transition:opacity .55s var(--ease,ease)}
+.plate__inner.can-swap{cursor:pointer}
+.plate__inner.can-swap::before{
+  content:"";position:absolute;right:13px;bottom:13px;z-index:3;width:9px;height:9px;
+  border-radius:50%;background:var(--brass);opacity:.55;transition:opacity .3s,scale .3s}
+.plate__inner.can-swap:hover::before,.plate__inner.can-swap:focus-visible::before{opacity:1;scale:1.3}
+.plate__inner.can-swap:focus-visible{outline:2px solid var(--forest);outline-offset:3px}
+.plate__inner.is-alt .plate__main{opacity:0}
+@media (prefers-reduced-motion:reduce){.plate__main{transition:none}}
 .plate figcaption{text-align:center;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#a89e8c}
 .portrait__body{display:flex;flex-direction:column;gap:clamp(1.4rem,3vh,2.4rem)}
 .portrait__name{font-size:clamp(3rem,9vw,9.5rem);line-height:.84}

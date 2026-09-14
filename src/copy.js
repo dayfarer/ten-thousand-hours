@@ -12,7 +12,7 @@
 
 const isTodo = v => v && typeof v === 'object' && v.__todo
 /* Fields that are structure, not prose — never offered for editing. */
-const SKIP = new Set(['type', 'id', 'nav', 'key', 'at', 'src', 'photo', 'countTo',
+const SKIP = new Set(['type', 'id', 'nav', 'key', 'at', 'src', 'photo', 'photoAlt', 'countTo',
                       'hours', 'finalIndex', 'verified', 'long'])
 
 /** Every editable string, as { path, value, todo }. Roots are the slide
