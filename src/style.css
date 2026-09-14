@@ -159,7 +159,22 @@ canvas{display:block}
 .ledger dt{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-3)}
 .ledger dd{margin:0;font-family:var(--serif);font-size:1.9rem;line-height:1}
 .ledger div:last-child dd{color:var(--forest)}
-@media (max-width:860px){.portrait{grid-template-columns:1fr}.plate{max-width:18rem}}
+/* stacked to one column there is far less height to spend, and a portrait
+   may now also carry a quote, so everything tightens together */
+@media (max-width:860px){
+  .portrait{grid-template-columns:1fr;gap:1rem}
+  .plate{max-width:10.5rem;gap:.4rem}
+  .plate img{max-height:19svh;object-fit:cover}
+  .plate figcaption{font-size:.52rem;letter-spacing:.2em}
+  .portrait__body{gap:.6rem}
+  .portrait__name{font-size:clamp(1.9rem,10vw,2.8rem)}
+  .ledger div{padding:.34rem 0}
+  .ledger dd{font-size:1.05rem}
+  .ledger dt{font-size:.58rem;letter-spacing:.2em}
+  .portrait .pull{font-size:.92rem;line-height:1.45}
+  .portrait__q{margin-top:.4rem;padding-left:.7rem}
+  .portrait__q p{font-size:.95rem}
+}
 
 /* ═══ dramatization ════════════════════════════════════════ */
 /* the wall sizes by viewport HEIGHT: width never clipped it, height did */
@@ -298,13 +313,21 @@ canvas{display:block}
 .graph__ink .halo{fill:none;stroke-width:1}
 .graph__ink [data-dot="casual"] .halo{stroke:var(--oxblood)}
 .graph__ink [data-dot="obsessed"] .halo{stroke:var(--forest)}
-.mk{position:absolute;display:flex;flex-direction:column;opacity:0}
+.graph__plot{overflow:hidden}
+.graph__cam{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
+.graph__beats{display:none}
+.graph__foot{transition:opacity .25s linear}
+/* labels sit outside the camera so they stay the same size at every zoom;
+   main.js positions each one on its own point */
+.mk{position:absolute;display:flex;flex-direction:column;opacity:0;
+  transition:opacity .28s linear;white-space:nowrap}
+.mk.is-on em{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
 .mk em{font-size:1.35rem;font-style:normal;font-family:var(--serif)}
 .mk small{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.mk--tyler{left:19%;top:39%}.mk--tyler em{color:var(--oxblood)}
-.mk--cole{left:36%;top:28%}.mk--cole em{color:var(--forest)}
+.mk--tyler em{color:var(--oxblood)}
+.mk--cole em{color:var(--forest)}
 /* where the flat line lands at 10,000 hours — still under Cole at 4,200 */
-.mk--proj{left:73%;top:29%;max-width:11rem;text-align:right;align-items:flex-end}
+.mk--proj{max-width:11rem}
 .mk--proj em{color:var(--oxblood)}
 .mk--proj small{font-family:var(--serif);font-style:italic;font-size:1.05rem}
 .axis{position:absolute;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
@@ -363,6 +386,12 @@ canvas{display:block}
 .examples dd{margin:.15rem 0 0;font-size:.88rem;color:var(--ink-3);line-height:1.5}
 .gated__punch em{color:var(--oxblood)}
 @media (max-width:900px){.gated__grid{grid-template-columns:1fr}}
+
+.portrait__q{margin:1.1rem 0 0;padding-left:1rem;border-left:2px solid var(--hair)}
+.portrait__q p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.35rem);
+  line-height:1.4;color:var(--ink)}
+.portrait__q cite{display:block;margin-top:.4rem;font-family:var(--sans);font-style:normal;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 
 /* ═══ plate — a photographed document, annotated ═══════════ */
 .pl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.8rem,4vw,3.4rem);align-items:center}

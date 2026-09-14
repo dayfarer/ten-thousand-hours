@@ -309,22 +309,82 @@ $$('[data-count]').forEach(el => {
   if (strike) inView(strike, () => gsap.to(strike, { scaleX: 1, duration: 0.8, ease: 'power2.inOut' }))
 }
 
-/* ── graph: the curves draw like ink ─────────────────────── */
+/* ── graph: the curves ink in, then the camera visits each point ──
+   The plot is a fixed 1120x450 drawing, so a dot's own cx/cy is where
+   the camera has to look. Only the drawing scales: the labels are
+   siblings that get repositioned to follow their point, which keeps
+   them the same size and readable at every zoom. */
 {
   const plot = $('[data-graph]')
   if (plot) {
+    const cam = $('[data-graph-cam]', plot)
     const paths = $$('[data-ink]', plot)
+    const VW = 1120, VH = 450
+
     paths.forEach(p => {
       const len = p.getTotalLength()
       gsap.set(p, { strokeDasharray: len, strokeDashoffset: len })
     })
-    gsap.timeline({
-      scrollTrigger: { trigger: plot, start: 'top 78%', end: 'bottom 70%', scrub: 0.7 },
-    })
-      .to(paths, { strokeDashoffset: 0, ease: 'none', stagger: 0.12 }, 0)
-      .to('[data-dot]', { opacity: 1, duration: 0.2 }, 0.55)
-      .to('[data-mark]', { opacity: 1, duration: 0.2, stagger: 0.08 }, 0.6)
-      .to('[data-gap]', { opacity: 1, duration: 0.25 }, 0.8)
+    // the ink lands once, on arrival; the camera owns the scroll from there
+    inView(plot, () => gsap.timeline()
+      .to(paths, { strokeDashoffset: 0, duration: 1.5, ease: 'none', stagger: 0.18 }, 0)
+      .to('[data-dot]', { opacity: 1, duration: 0.25 }, 0.9)
+      .to('[data-gap]', { opacity: 1, duration: 0.3 }, 1.3), '0px')
+
+    const at = sel => {
+      const c = $(sel + ' circle', plot)
+      return c && { x: +c.getAttribute('cx') / VW, y: +c.getAttribute('cy') / VH }
+    }
+    const WIDE = { p: { x: 0.5, y: 0.5 }, s: 1, mk: null }
+    const beats = [
+      WIDE,
+      { p: at('[data-dot="casual"]'),   s: 2.3, mk: '.mk--tyler' },
+      { p: at('[data-dot="obsessed"]'), s: 2.3, mk: '.mk--cole' },
+      ...(at('[data-dot="proj"]') ? [{ p: at('[data-dot="proj"]'), s: 2.3, mk: '.mk--proj' }] : []),
+      WIDE,
+    ].filter(b => b.p)
+
+    const lerp = (a, b, t) => a + (b - a) * t
+    const ease = gsap.parseEase('power2.inOut')
+
+    const look = a => {
+      const i = Math.min(beats.length - 2, Math.max(0, Math.floor(a)))
+      const e = ease(clamp(0, 1, a - i))
+      const A = beats[i], B = beats[i + 1]
+      const S = lerp(A.s, B.s, e)
+      const px = lerp(A.p.x, B.p.x, e), py = lerp(A.p.y, B.p.y, e)
+      const W = plot.clientWidth, H = plot.clientHeight
+      cam.style.transform =
+        `translate(${(-S * (px - 0.5) * W).toFixed(1)}px,${(-S * (py - 0.5) * H).toFixed(1)}px) scale(${S.toFixed(3)})`
+
+      // labels are outside the camera, so put each one where its dot now is
+      beats.forEach(b => {
+        if (!b.mk) return
+        const el = $(b.mk, plot); if (!el) return
+        const fx = 0.5 + S * (b.p.x - px), fy = 0.5 + S * (b.p.y - py)
+        el.style.left = (fx * 100).toFixed(2) + '%'
+        el.style.top = (fy * 100).toFixed(2) + '%'
+        el.style.transform = `translate(${fx > 0.78 ? '-88%' : fx < 0.12 ? '-6%' : '-50%'},-128%)`
+        // dim what the camera is not looking at, drop what it has pushed off
+        const focused = Math.abs(a - beats.indexOf(b)) < 0.45
+        el.style.opacity = (fx < -0.04 || fx > 1.04 || fy < -0.04 || fy > 1.04) ? 0 : focused ? 1 : 0.34
+        el.classList.toggle('is-on', focused)
+      })
+    }
+
+    if (reduced) { look(0) } else {
+      look(0)
+      gsap.to({}, {
+        scrollTrigger: {
+          ...rangeOf(plot.closest('[data-sheet]')), scrub: 0.6, invalidateOnRefresh: true,
+          onUpdate: self => {
+            look(self.progress * (beats.length - 1))
+            $('[data-graph-foot]').style.opacity = (0.35 + 0.65 * Math.max(0, (self.progress - 0.72) / 0.28)).toFixed(2)
+          },
+        },
+      })
+      addEventListener('resize', () => look(0))
+    }
   }
 }
 

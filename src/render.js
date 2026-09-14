@@ -101,6 +101,9 @@ const views = {
           ${s.facts.map(f => `<div><dt>${t(f.k)}</dt><dd>${t(f.v)}</dd></div>`).join('')}
         </dl>
         <p class="pull" data-rise>${t(s.note)}</p>
+        ${s.quote ? `<blockquote class="portrait__q" data-rise>
+          <p>&ldquo;${t(s.quote)}&rdquo;</p><cite>&mdash; ${t(s.name)}</cite>
+        </blockquote>` : ''}
       </div>
     </div>`,
 
@@ -213,6 +216,7 @@ const views = {
       </ul>
     </div>
     <div class="graph__plot" data-graph>
+      <div class="graph__cam" data-graph-cam>
       <svg viewBox="0 0 1120 450" preserveAspectRatio="none" class="graph__grid">
         <line x1="0" y1="430" x2="1120" y2="430"></line><line x1="0" y1="0" x2="0" y2="430"></line>
         <line class="g" x1="0" y1="322" x2="1120" y2="322"></line>
@@ -230,14 +234,18 @@ const views = {
         <g data-dot="obsessed" opacity="0"><circle cx="470" cy="214" r="6"></circle><circle cx="470" cy="214" r="13" class="halo"></circle></g>
         ${s.projection ? `<g data-dot="proj" opacity="0"><circle cx="1112" cy="218" r="6"></circle><circle cx="1112" cy="218" r="13" class="halo"></circle></g>` : ''}
       </svg>
+      </div>
       ${mark(s, 'casual', 'mk--tyler')}
       ${mark(s, 'obsessed', 'mk--cole')}
       ${s.projection ? `<span class="mk mk--proj" data-mark><em>${t(s.projection.label)}</em><small>${t(s.projection.note)}</small></span>` : ''}
       <span class="axis axis--x">${t(s.axisX)}</span>
       ${s.projection ? `<span class="axis axis--max">10,000 hrs</span>` : ''}
       <span class="axis axis--y">${t(s.axisY)}</span>
+      <span class="graph__beats" aria-hidden="true">${
+        Array(2 + s.markers.length + (s.projection ? 1 : 0)).fill('<i data-checkpoint></i>').join('')
+      }</span>
     </div>
-    <p class="pull graph__foot">${t(s.foot)}</p>`,
+    <p class="pull graph__foot" data-graph-foot>${t(s.foot)}</p>`,
 
   spiral: s => `
     <div class="spiral__head">
@@ -310,7 +318,7 @@ const views = {
 }
 
 /* extra screens of scroll a section needs while it sits pinned */
-const EXTRA = { dramatization: 1.3, timeline: 1.5, spiral: 1.2 }
+const EXTRA = { dramatization: 1.3, timeline: 1.5, spiral: 1.2, graph: 1.4 }
 
 export function render(root) {
   root.innerHTML = deck.map((s, i) => {

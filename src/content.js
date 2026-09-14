@@ -391,6 +391,7 @@ export const deck = [
     note: 'Two hundred matches a year is two hundred rooms full of people telling you instantly when you ' +
           'were wrong. Then he turns around and trains the new hires, which is the same loop pointed ' +
           'at somebody else.',
+    quote: 'Start thy purse to fattening… Control thy expenditures… Make thy gold multiply.',
   },
 
   /* Restored. Her answer when Collin asked for a final quote. */
