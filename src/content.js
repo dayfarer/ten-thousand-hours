@@ -178,13 +178,13 @@ export const deck = [
   {
     type: 'exhibit',
     id: 'tyler',
-    nav: 'Tyler',
+    nav: 'Tyluhh',
     kicker: 'Exhibit the Second — a flat slope',
-    name: 'Tyler',
+    name: 'Tyluhh',
     role: 'Rainbow Six Siege',
     countTo: 2500,
     unit: 'hours',
-    quote: TODO("Tyler's exact quote — the “still trash” line, verbatim"),
+    quote: TODO("Tyluhh's exact quote — the “still trash” line, verbatim"),
     rank: TODO('actual rank'),
     rankLabel: 'Current rank',
     punch: 'No booklet. No sections. No director to signal the next note. Two and a half thousand hours ' +
@@ -204,11 +204,11 @@ export const deck = [
       { key: 'obsessed', label: 'Coached',   desc: '"Every week, someone did."' },
     ],
     markers: [
-      { key: 'casual',   at: 2500, label: 'Tyler', note: '2,500 hrs · flat' },
+      { key: 'casual',   at: 2500, label: 'Tyluhh', note: '2,500 hrs · flat' },
       { key: 'obsessed', at: 4200, label: 'Cole',  note: '4,200 hrs · still climbing' },
     ],
     /* The answer to "he is just not at 10,000 yet" — drawn, not argued. */
-    projection: { label: 'Tyler at 10,000 hrs', note: 'Same place.' },
+    projection: { label: 'Tyluhh at 10,000 hrs', note: 'Same place.' },
     foot: 'He is not short of hours. He is short of the thing that makes hours count. ' +
           'Ten thousand of these ends up in the same spot — the line is already flat.',
   },
@@ -301,7 +301,7 @@ export const deck = [
     nav: 'Food security',
     kicker: 'Section 3 — Power of Food, the same argument',
     title: 'Every gate has a name. None of them are willpower.',
-    body: 'Nobody eats badly because they lack willpower, any more than Tyler lacked hours. Eating well is ' +
+    body: 'Nobody eats badly because they lack willpower, any more than Tyluhh lacked hours. Eating well is ' +
           'a skill, and skills need somebody who already knows how. Take that person away and you get the ' +
           'same flat line. People are trying. Nothing is telling them what would work.',
     gates: [
@@ -340,7 +340,7 @@ export const deck = [
     ],
     examples: [
       { who: 'Cole', what: 'had somebody in the room correcting her every week for seven years' },
-      { who: 'Tyler', what: 'has two and a half thousand hours and nobody' },
+      { who: 'Tyluhh', what: 'has two and a half thousand hours and nobody' },
     ],
     punch: 'We cannot buy anyone ten thousand hours. *We can be the person in the room.*',
   },
